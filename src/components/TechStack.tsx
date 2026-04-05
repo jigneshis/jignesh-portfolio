@@ -28,8 +28,9 @@ const TechPill = ({ name, icon: Icon }: { name: string; icon: any }) => (
 );
 
 const TechStack = () => {
-  const row1 = [...techs, ...techs];
-  const row2 = [...techs.slice(6), ...techs.slice(0, 6), ...techs.slice(6), ...techs.slice(0, 6)];
+  // Triple the items to ensure smooth infinite loop coverage
+  const row1 = [...techs, ...techs, ...techs];
+  const row2 = [...techs.slice(6), ...techs.slice(0, 6), ...techs.slice(6), ...techs.slice(0, 6), ...techs.slice(6), ...techs.slice(0, 6)];
 
   return (
     <section id="tech" className="fluid-py overflow-hidden">
@@ -50,13 +51,13 @@ const TechStack = () => {
         </div>
       </div>
 
-      <div className="space-y-4 md:space-y-6">
-        <div className="flex gap-4 animate-marquee">
+      <div className="space-y-4 md:space-y-6 pause-on-hover mask-fade-edges">
+        <div className="flex gap-4 animate-marquee w-max">
           {row1.map((tech, i) => (
             <TechPill key={`a-${tech.name}-${i}`} {...tech} />
           ))}
         </div>
-        <div className="flex gap-4 animate-marquee-reverse">
+        <div className="flex gap-4 animate-marquee-reverse w-max">
           {row2.map((tech, i) => (
             <TechPill key={`b-${tech.name}-${i}`} {...tech} />
           ))}
