@@ -16,12 +16,12 @@ interface LiquidEtherProps {
 }
 
 const LiquidEther: React.FC<LiquidEtherProps> = ({
-  colors = ["#ff7a18", "#ff9a3c", "#ffb347"],
-  mouseForce = 18,
+  colors = ["#5227FF", "#7B5CFF", "#B19EEF"],
+  mouseForce = 15,
   cursorSize = 90,
   isViscous = true,
   viscous = 30,
-  resolution = 0.4,
+  resolution = 0.5,
   autoDemo = true,
   autoSpeed = 0.4,
   autoIntensity = 2,
@@ -35,14 +35,13 @@ const LiquidEther: React.FC<LiquidEtherProps> = ({
     const canvas = canvasRef.current;
     const renderer = new THREE.WebGLRenderer({
       canvas,
-      antialias: false,
+      antialias: true,
       alpha: true,
     });
 
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     
-    // Convert hex colors to THREE.Color
     const threeColors = colors.map(c => new THREE.Color(c));
 
     const geometry = new THREE.PlaneGeometry(2, 2);
@@ -81,37 +80,33 @@ const LiquidEther: React.FC<LiquidEtherProps> = ({
         uniform float uAutoIntensity;
         varying vec2 vUv;
 
-        // Simple noise function for fluid feel
-        float noise(vec2 p) {
-          return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
-        }
-
         void main() {
           vec2 uv = vUv;
           float aspect = uResolution.x / uResolution.y;
           vec2 mouse = uMouse;
           
-          // Fluid simulation logic (simplified for GLSL)
           float dist = distance(vec2(uv.x * aspect, uv.y), vec2(mouse.x * aspect, mouse.y));
           float mouseEffect = smoothstep(uCursorSize, 0.0, dist) * uMouseForce;
           
           float time = uTime * uAutoSpeed;
+          
+          // Smoother flow without sharp noise
           vec2 flow = vec2(
-            sin(uv.y * 3.0 + time) * uAutoIntensity,
-            cos(uv.x * 3.0 + time) * uAutoIntensity
+            sin(uv.y * 2.0 + time) * uAutoIntensity,
+            cos(uv.x * 2.0 + time) * uAutoIntensity
           );
           
           vec2 finalUv = uv + flow + (mouse - uv) * mouseEffect * (1.0 - uViscosity);
           
-          float n = noise(finalUv * 10.0 + time);
-          float mix1 = sin(finalUv.x * 2.0 + finalUv.y * 1.5 + time) * 0.5 + 0.5;
-          float mix2 = cos(finalUv.x * 1.2 - finalUv.y * 2.1 + time * 0.8) * 0.5 + 0.5;
+          // Ultra-smooth gradient blending
+          float mix1 = sin(finalUv.x * 1.5 + finalUv.y * 1.0 + time) * 0.5 + 0.5;
+          float mix2 = cos(finalUv.x * 1.0 - finalUv.y * 1.5 + time * 0.7) * 0.5 + 0.5;
           
           vec3 color = mix(uColor1, uColor2, mix1);
           color = mix(color, uColor3, mix2);
           
-          // Add some depth/shading
-          color *= 0.8 + 0.2 * sin(finalUv.x * 10.0 + time);
+          // Soft ambient lighting effect
+          color *= 0.9 + 0.1 * sin(finalUv.x * 5.0 + time);
           
           gl_FragColor = vec4(color, 1.0);
         }
@@ -122,7 +117,9 @@ const LiquidEther: React.FC<LiquidEtherProps> = ({
     scene.add(mesh);
 
     const resize = () => {
-      const { clientWidth, clientHeight } = containerRef.current!;
+      const container = containerRef.current;
+      if (!container) return;
+      const { clientWidth, clientHeight } = container;
       renderer.setSize(clientWidth * resolution, clientHeight * resolution, false);
       material.uniforms.uResolution.value.set(clientWidth, clientHeight);
     };
@@ -131,7 +128,9 @@ const LiquidEther: React.FC<LiquidEtherProps> = ({
     resize();
 
     const onMouseMove = (e: MouseEvent) => {
-      const rect = containerRef.current!.getBoundingClientRect();
+      const container = containerRef.current;
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
       const y = 1.0 - (e.clientY - rect.top) / rect.height;
       material.uniforms.uMouse.value.set(x, y);
@@ -159,7 +158,7 @@ const LiquidEther: React.FC<LiquidEtherProps> = ({
 
   return (
     <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none">
-      <canvas ref={canvasRef} className="w-full h-full opacity-60" />
+      <canvas ref={canvasRef} className="w-full h-full opacity-70" />
     </div>
   );
 };

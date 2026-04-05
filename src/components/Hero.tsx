@@ -25,21 +25,21 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
-      {/* Liquid Ether Background Layer */}
+      {/* Smooth Liquid Ether Background Layer */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <LiquidEther 
-          colors={["#ff7a18", "#ff9a3c", "#ffb347"]}
-          mouseForce={18}
+          colors={["#5227FF", "#7B5CFF", "#B19EEF"]}
+          mouseForce={15}
           cursorSize={90}
           isViscous={true}
           viscous={30}
-          resolution={0.4}
+          resolution={0.5}
           autoDemo={true}
           autoSpeed={0.4}
           autoIntensity={2}
         />
-        {/* Cinematic Blending Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background z-[1]" />
+        {/* Soft Blending Overlay - Lightened to allow colors to glow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background z-[1]" />
       </div>
 
       <motion.div 
@@ -51,11 +51,11 @@ const Hero = () => {
         {/* Availability badge */}
         <motion.div
           variants={itemVariants}
-          className="inline-flex items-center gap-2.5 border border-white/5 bg-white/[0.03] backdrop-blur-sm rounded-full px-5 py-2 md:px-6 md:py-2.5 text-[11px] md:text-[13px] text-primary mb-8 md:mb-12 uppercase tracking-widest font-bold"
+          className="inline-flex items-center gap-2.5 border border-white/10 bg-white/[0.05] backdrop-blur-md rounded-full px-5 py-2 md:px-6 md:py-2.5 text-[11px] md:text-[13px] text-white/90 mb-8 md:mb-12 uppercase tracking-widest font-bold"
         >
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-primary animate-ping opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+            <span className="absolute inline-flex h-full w-full rounded-full bg-[#7B5CFF] animate-ping opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7B5CFF]" />
           </span>
           Available for new projects
         </motion.div>
@@ -78,14 +78,14 @@ const Hero = () => {
             variants={itemVariants}
             className="font-display fluid-h1 font-extrabold tracking-tighter leading-[0.9]"
           >
-            <span className="text-gradient-nebula drop-shadow-[0_0_30px_rgba(255,115,22,0.2)]">better.</span>
+            <span className="text-gradient-nebula drop-shadow-[0_0_40px_rgba(123,92,255,0.3)]">better.</span>
           </motion.h1>
         </div>
 
         {/* Subtext */}
         <motion.p
           variants={itemVariants}
-          className="text-muted-foreground fluid-p max-w-2xl mx-auto mb-10 md:mb-14 px-4"
+          className="text-white/70 fluid-p max-w-2xl mx-auto mb-10 md:mb-14 px-4"
         >
           I craft fast, stunning websites for premium businesses that
           <span className="text-foreground font-semibold"> convert visitors into clients.</span>
@@ -106,7 +106,7 @@ const Hero = () => {
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </motion.a>
           <motion.a
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.05)" }}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.08)" }}
             whileTap={{ scale: 0.98 }}
             href="#pricing"
             className="w-full sm:w-auto glass-card text-foreground font-bold px-8 py-4 md:px-12 md:py-6 rounded-full text-base md:text-lg flex items-center justify-center transition-all"
@@ -119,12 +119,12 @@ const Hero = () => {
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.2 }}
+        animate={{ opacity: 0.4 }}
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-3"
       >
-        <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">Scroll</span>
-        <div className="w-[1px] h-8 md:h-12 bg-gradient-to-b from-primary to-transparent" />
+        <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-white/50">Scroll</span>
+        <div className="w-[1px] h-8 md:h-12 bg-gradient-to-b from-[#7B5CFF] to-transparent" />
       </motion.div>
     </section>
   );
