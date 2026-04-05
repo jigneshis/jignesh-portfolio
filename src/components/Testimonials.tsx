@@ -8,31 +8,31 @@ const testimonials = [
     initials: "RS",
   },
   {
-    quote: "We went from having no online presence to getting daily orders through our site. Couldn't be happier.",
+    quote: "We went from having no online presence to getting daily orders through our site. Best investment we made.",
     name: "Priya Meena",
-    role: "Founder, Chai & Co Café",
+    role: "Founder, Chai & Co",
     initials: "PM",
   },
   {
     quote: "He understood our brand from day one. The site feels luxurious but loads in seconds. Our clients love it.",
     name: "Anita Verma",
-    role: "Director, Studio Luxe Salon",
+    role: "Director, Studio Luxe",
     initials: "AV",
   },
   {
-    quote: "Professional, fast, and incredibly easy to work with. He delivered exactly what we envisioned — and then some.",
+    quote: "Professional, fast, and incredibly easy to work with. Delivered exactly what we envisioned — and then some.",
     name: "Suresh Joshi",
-    role: "Manager, Ajmer Heritage Stays",
+    role: "Ajmer Heritage Stays",
     initials: "SJ",
   },
   {
     quote: "Our portfolio site has directly landed us three new clients. The ROI on this was insane.",
     name: "Dev Patel",
-    role: "Co-founder, DevCraft Agency",
+    role: "Co-founder, DevCraft",
     initials: "DP",
   },
   {
-    quote: "Fast turnaround, great communication, and a beautiful end product. Will definitely work with him again.",
+    quote: "Fast turnaround, great communication, beautiful end product. Will definitely work with him again.",
     name: "Kavita Singh",
     role: "Owner, Bloom Florists",
     initials: "KS",
@@ -40,16 +40,22 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ quote, name, role, initials }: typeof testimonials[0]) => (
-  <div className="flex-shrink-0 w-80 sm:w-96 bg-secondary border border-border rounded-xl p-6 space-y-4">
-    <Quote size={20} className="text-primary/50" />
-    <p className="text-sm text-muted-foreground leading-relaxed">{quote}</p>
-    <div className="flex items-center gap-3">
-      <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-xs font-semibold text-primary">
-        {initials}
-      </div>
-      <div>
-        <p className="text-sm font-medium text-foreground">{name}</p>
-        <p className="text-xs text-muted-foreground">{role}</p>
+  <div className="flex-shrink-0 w-[340px] sm:w-[400px] tilt-card bg-card border border-border/50 rounded-2xl p-7 space-y-5 relative overflow-hidden group">
+    {/* Subtle gradient bg on hover */}
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    
+    <div className="relative">
+      <Quote size={24} className="text-primary/30" />
+      <p className="text-sm text-muted-foreground leading-relaxed mt-3">{quote}</p>
+      
+      <div className="flex items-center gap-3 mt-6 pt-5 border-t border-border/30">
+        <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+          {initials}
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-foreground">{name}</p>
+          <p className="text-xs text-muted-foreground">{role}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -59,16 +65,21 @@ const Testimonials = () => {
   const doubled = [...testimonials, ...testimonials];
 
   return (
-    <section id="testimonials" className="py-24 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 mb-12">
-        <div className="scroll-reveal">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-2 h-2 rounded-full bg-primary" />
-            <span className="text-sm text-primary font-medium">Testimonials</span>
+    <section id="testimonials" className="py-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-14">
+        <div className="scroll-reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2.5 mb-5">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span className="text-sm text-primary font-medium uppercase tracking-wider">Testimonials</span>
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground">
+              Kind words<span className="text-primary">.</span>
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-            What clients say
-          </h2>
+          <p className="text-muted-foreground text-sm max-w-xs">
+            Don't just take my word for it — here's what my clients have to say.
+          </p>
         </div>
       </div>
 
