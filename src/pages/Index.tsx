@@ -24,13 +24,13 @@ const Index = () => {
 
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-[110]"
         style={{ scaleX }}
       />
 
       {/* Dynamic Cinematic Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Cyan Light Source */}
+        {/* Warm Orange Light Source */}
         <motion.div
           animate={{
             x: [0, 100, 0],
@@ -38,10 +38,10 @@ const Index = () => {
             opacity: [0.08, 0.12, 0.08]
           }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-1/4 -left-1/4 w-full h-full bg-[radial-gradient(circle,rgba(0,180,216,0.12)_0%,transparent_70%)]"
+          className="absolute -top-1/4 -left-1/4 w-full h-full bg-[radial-gradient(circle,rgba(255,122,24,0.12)_0%,transparent_70%)]"
         />
         
-        {/* Indigo Light Source */}
+        {/* Soft Amber Light Source */}
         <motion.div
           animate={{
             x: [0, -80, 0],
@@ -49,7 +49,7 @@ const Index = () => {
             opacity: [0.06, 0.1, 0.06]
           }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-[radial-gradient(circle,rgba(67,97,238,0.1)_0%,transparent_70%)]"
+          className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-[radial-gradient(circle,rgba(255,163,100,0.1)_0%,transparent_70%)]"
         />
 
         {/* Deep Dark Spot */}

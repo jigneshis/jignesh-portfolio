@@ -15,6 +15,7 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -23,17 +24,22 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-nav py-4" : "bg-transparent py-6"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
+    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-full max-w-[calc(100%-2rem)] md:w-fit">
+      <motion.nav
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`relative flex items-center justify-between gap-8 px-6 py-3 md:px-8 md:py-4 rounded-[2rem] border transition-all duration-500 glass-shine ${
+          scrolled 
+            ? "bg-black/40 backdrop-blur-2xl border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]" 
+            : "bg-white/[0.05] backdrop-blur-xl border-white/10 shadow-[0_10px_30px_rgba(255,122,24,0.05)]"
+        }`}
+      >
+        {/* Subtle inner highlight for glass feel */}
+        <div className="absolute inset-0 rounded-[2rem] border border-white/[0.05] pointer-events-none" />
+
         {/* Logo */}
-        <a href="#" className="font-display text-2xl font-bold tracking-tight text-foreground group">
+        <a href="#" className="font-display text-xl md:text-2xl font-bold tracking-tight text-foreground whitespace-nowrap group">
           Jig<span className="italic font-light text-primary transition-all group-hover:tracking-wider">nesh</span>
         </a>
 
@@ -43,66 +49,75 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-5 py-2 group"
+              onMouseEnter={() => setHoveredLink(link.label)}
+              onMouseLeave={() => setHoveredLink(null)}
+              className="relative text-[13px] font-bold text-muted-foreground hover:text-foreground transition-all duration-300 px-5 py-2 group uppercase tracking-widest"
             >
-              {link.label}
-              <span className="absolute bottom-0 left-1/2 w-0 h-px bg-primary -translate-x-1/2 group-hover:w-1/2 transition-all duration-300" />
+              <span className="relative z-10">{link.label}</span>
+              
+              {/* Animated Underline */}
+              <motion.span
+                initial={{ width: 0, left: 0 }}
+                animate={{ width: hoveredLink === link.label ? "50%" : 0 }}
+                className="absolute bottom-1 left-1/2 -translate-x-1/2 h-[1px] bg-primary/60 shadow-[0_0_8px_rgba(255,122,24,0.5)] pointer-events-none"
+              />
             </a>
           ))}
-          <div className="w-px h-6 bg-white/10 mx-4" />
+        </div>
+
+        {/* CTA Button */}
+        <div className="flex items-center gap-4">
           <motion.a
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(255,122,24,0.3)" }}
             whileTap={{ scale: 0.95 }}
             href="#contact"
-            className="btn-primary-glow bg-primary text-primary-foreground text-sm font-bold px-7 py-2.5 rounded-full"
+            className="hidden md:block bg-primary text-primary-foreground text-[12px] font-black px-7 py-3 rounded-full uppercase tracking-widest shine-sweep"
           >
             Let's Talk
           </motion.a>
-        </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground p-2 rounded-xl hover:bg-white/5 transition-colors"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+          {/* Mobile toggle */}
+          <button
+            className="md:hidden text-foreground p-2 rounded-full hover:bg-white/5 transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </motion.nav>
 
       {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-nav absolute top-full left-0 right-0 overflow-hidden"
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            className="absolute top-full left-0 right-0 mt-4 md:hidden bg-black/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl p-6 space-y-4"
           >
-            <div className="px-6 py-8 space-y-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-2xl font-display font-bold text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <div className="pt-4">
-                <a
-                  href="#contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="w-full text-center block bg-primary text-primary-foreground font-bold py-4 rounded-2xl"
-                >
-                  Let's Talk
-                </a>
-              </div>
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="block text-xl font-display font-bold text-muted-foreground hover:text-primary transition-colors py-2"
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="pt-4 border-t border-white/5">
+              <a
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
+                className="w-full text-center block bg-primary text-primary-foreground font-black py-4 rounded-2xl uppercase tracking-widest"
+              >
+                Let's Talk
+              </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </div>
   );
 };
 

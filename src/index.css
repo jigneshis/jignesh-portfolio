@@ -12,19 +12,19 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 4%;
     --popover-foreground: 0 0% 98%;
-    --primary: 199 89% 48%; /* Cyber Cyan */
+    --primary: 25 100% 55%; /* Premium Orange #ff7a18 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 226 70% 55%; /* Royal Indigo */
+    --secondary: 240 5% 10%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 5% 10%;
     --muted-foreground: 240 5% 60%;
-    --accent: 199 89% 48%;
+    --accent: 25 100% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 240 5% 12%;
     --input: 240 5% 12%;
-    --ring: 199 89% 48%;
+    --ring: 25 100% 55%;
     --radius: 1rem;
   }
 }
@@ -85,7 +85,7 @@
 }
 
 .text-gradient-nebula {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00b4d8] via-[#4cc9f0] to-[#4361ee];
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a18] via-[#ffa364] to-[#ff7a18];
   background-size: 200% auto;
   animation: textShine 5s linear infinite;
 }
@@ -126,5 +126,30 @@
 }
 
 .btn-primary-glow:hover {
-  box-shadow: 0 0 30px rgba(0, 180, 216, 0.3);
+  box-shadow: 0 0 30px rgba(255, 122, 24, 0.3);
+}
+
+/* Glass Shine for Navbar */
+.glass-shine {
+  position: relative;
+  overflow: hidden;
+}
+.glass-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: 0.5s;
+}
+.glass-shine:hover::before {
+  left: 150%;
 }
