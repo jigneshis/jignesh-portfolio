@@ -6,24 +6,28 @@ import { ArrowUpRight } from "lucide-react";
 const projects = [
   {
     name: "Ishant Kumar",
+    href: "https://ishanttt.vercel.app",
     tags: ["Video Portfolio", "Creator Site"],
     year: "2024",
     description: "A video editor's portfolio designed to showcase his work and get more clients through high-impact visual storytelling.",
   },
   {
     name: "Samim",
+    href: "https://illusion-gold.vercel.app",
     tags: ["Editor Site", "Brand Growth"],
     year: "2024",
     description: "A specialized portfolio for a video editor focused on showcasing creative work to attract premium brand collaborations.",
   },
   {
     name: "Flash",
+    href: "https://theycallmeflash.vercel.app",
     tags: ["Visual Effects", "Portfolio"],
     year: "2023",
     description: "A high-octane video editor portfolio designed to capture attention and highlight technical editing mastery.",
   },
   {
     name: "Bharat Esports",
+    href: "https://bharatesports.online",
     tags: ["Full Stack", "Gaming Hub"],
     year: "2024",
     description: "A comprehensive full-stack platform for esports tournament organizers to manage, track, and host professional events.",
@@ -40,7 +44,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const xPct = (e.clientX - rect.left) / rect.width - 0.5;
     const yPct = (e.clientY - rect.top) / rect.height - 0.5;
@@ -54,7 +58,10 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
   };
 
   return (
-    <motion.div
+    <motion.a
+      href={project.href}
+      target="_blank"
+      rel="noopener noreferrer"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -62,7 +69,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group relative border-t border-white/[0.05] last:border-b"
+      className="group relative border-t border-white/[0.05] last:border-b block"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.05] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
@@ -106,7 +113,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 };
 
