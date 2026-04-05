@@ -32,26 +32,25 @@ const testimonials = [
 
 const TestimonialCard = ({ quote, name, role, initials }: typeof testimonials[0]) => (
   <motion.div
-    whileHover={{ y: -15, rotateX: 5, rotateY: 5, scale: 1.02 }}
-    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    className="flex-shrink-0 w-[400px] sm:w-[500px] glass-card rounded-[2.5rem] p-12 space-y-10 relative group cursor-grab active:cursor-grabbing overflow-hidden interactive-card"
+    whileHover={{ y: -10, rotateX: 3, rotateY: 3, scale: 1.01 }}
+    className="flex-shrink-0 w-[300px] md:w-[450px] glass-card rounded-[2rem] p-8 md:p-10 space-y-8 relative group cursor-grab active:cursor-grabbing overflow-hidden"
   >
-    <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 group-hover:text-primary transition-all duration-700 group-hover:scale-110">
-      <Quote size={100} className="stroke-[1px]" />
+    <div className="absolute top-0 right-0 p-6 md:p-8 opacity-5 group-hover:opacity-10 transition-all duration-700">
+      <Quote size={80} className="stroke-[1px]" />
     </div>
     
-    <div className="relative space-y-8">
-      <p className="text-2xl text-foreground font-medium leading-relaxed tracking-tight">
+    <div className="relative space-y-6">
+      <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed tracking-tight">
         "{quote}"
       </p>
       
-      <div className="flex items-center gap-5 pt-10 border-t border-white/[0.05]">
-        <div className="w-16 h-16 rounded-[1.25rem] bg-primary/10 border border-primary/20 flex items-center justify-center text-lg font-black text-primary shadow-[0_0_20px_rgba(0,180,216,0.1)]">
+      <div className="flex items-center gap-4 pt-6 md:pt-8 border-t border-white/[0.05]">
+        <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-base md:text-lg font-black text-primary">
           {initials}
         </div>
         <div>
-          <p className="text-xl font-bold text-foreground">{name}</p>
-          <p className="text-sm text-muted-foreground font-bold tracking-[0.2em] uppercase">{role}</p>
+          <p className="text-base md:text-lg font-bold text-foreground">{name}</p>
+          <p className="text-[10px] md:text-xs text-muted-foreground font-bold tracking-widest uppercase">{role}</p>
         </div>
       </div>
     </div>
@@ -60,20 +59,20 @@ const TestimonialCard = ({ quote, name, role, initials }: typeof testimonials[0]
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-40 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-24 text-center">
+    <section id="testimonials" className="fluid-py overflow-hidden relative">
+      <div className="container-wide mb-12 md:mb-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-4"
         >
           <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-[1px] bg-primary" />
-            <span className="text-xs text-primary font-black uppercase tracking-[0.4em]">Voices of Trust</span>
-            <div className="w-12 h-[1px] bg-primary" />
+            <div className="w-8 h-[1px] bg-primary" />
+            <span className="text-[10px] md:text-xs text-primary font-black uppercase tracking-[0.3em]">Voices of Trust</span>
+            <div className="w-8 h-[1px] bg-primary" />
           </div>
-          <h2 className="font-display text-6xl sm:text-7xl font-bold text-foreground tracking-tighter">
+          <h2 className="font-display fluid-h2 font-bold text-foreground tracking-tighter">
             Loved by <span className="text-gradient-nebula">Visionaries.</span>
           </h2>
         </motion.div>
@@ -83,20 +82,19 @@ const Testimonials = () => {
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 50,
+            duration: 40,
             repeat: Infinity,
             ease: "linear",
           }}
-          className="flex gap-10 px-10 w-fit"
+          className="flex gap-6 md:gap-10 px-6 w-fit"
         >
           {[...testimonials, ...testimonials].map((t, i) => (
             <TestimonialCard key={`${t.name}-${i}`} {...t} />
           ))}
         </motion.div>
         
-        {/* Faders */}
-        <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-[#050507] to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-64 bg-gradient-to-l from-[#050507] to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-[#050507] to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-[#050507] to-transparent z-10 pointer-events-none" />
       </div>
     </section>
   );

@@ -26,24 +26,24 @@ const services = [
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-40 relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="text-center mb-32 space-y-6">
+    <section id="pricing" className="fluid-py relative">
+      <div className="container-wide">
+        <div className="text-center mb-16 md:mb-24 space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-3 glass-card px-8 py-3 rounded-full"
+            className="inline-flex items-center gap-3 glass-card px-6 py-2 md:px-8 md:py-3 rounded-full"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-primary">Service Models</span>
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-primary">Service Models</span>
           </motion.div>
-          <h2 className="font-display text-6xl sm:text-7xl font-bold text-foreground tracking-tighter">
+          <h2 className="font-display fluid-h2 font-bold text-foreground">
             Invest in your <span className="text-gradient-nebula">Identity.</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10 items-center">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-stretch">
           {services.map((s, i) => (
             <motion.div
               key={s.title}
@@ -51,38 +51,38 @@ const Pricing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
-              whileHover={{ y: -15 }}
-              className={`relative rounded-[3rem] p-12 space-y-10 transition-all duration-700 interactive-card ${
+              whileHover={{ y: -10 }}
+              className={`relative rounded-[2.5rem] p-8 md:p-12 flex flex-col space-y-8 md:space-y-10 transition-all duration-700 ${
                 s.recommended 
-                  ? "bg-primary text-primary-foreground border-none scale-110 z-10 shadow-[0_30px_100px_rgba(0,180,216,0.2)]" 
-                  : "glass-card hover:border-primary/40"
+                  ? "bg-primary text-primary-foreground scale-100 md:scale-105 z-10 shadow-[0_20px_60px_rgba(255,122,24,0.2)]" 
+                  : "glass-card"
               }`}
             >
               {s.recommended && (
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white text-primary text-[11px] font-black uppercase tracking-[0.4em] px-8 py-3 rounded-full shadow-2xl">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary text-[9px] md:text-[11px] font-black uppercase tracking-widest px-6 py-2 rounded-full shadow-xl">
                   Most Popular
                 </div>
               )}
               
               <div className="space-y-2">
-                <h3 className={`text-3xl font-display font-bold ${s.recommended ? "text-white" : "text-foreground"}`}>
+                <h3 className={`text-2xl md:text-3xl font-display font-bold ${s.recommended ? "text-white" : "text-foreground"}`}>
                   {s.title}
                 </h3>
-                <p className={`text-sm font-bold uppercase tracking-widest ${s.recommended ? "text-white/70" : "text-muted-foreground"}`}>
+                <p className={`text-[10px] md:text-xs font-bold uppercase tracking-widest ${s.recommended ? "text-white/70" : "text-muted-foreground"}`}>
                   Starting at
                 </p>
-                <p className={`text-5xl font-black mt-4 ${s.recommended ? "text-white" : "text-foreground"}`}>
+                <p className={`text-4xl md:text-5xl font-black mt-2 md:mt-4 ${s.recommended ? "text-white" : "text-foreground"}`}>
                   {s.price}
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6 flex-1">
                 {s.features.map((f) => (
-                  <div key={f} className="flex items-center gap-4">
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center ${s.recommended ? "bg-white/20" : "bg-primary/10"}`}>
-                      <Check size={16} className={s.recommended ? "text-white" : "text-primary"} />
+                  <div key={f} className="flex items-center gap-3 md:gap-4">
+                    <div className={`w-5 h-5 md:w-7 md:h-7 rounded-full flex items-center justify-center ${s.recommended ? "bg-white/20" : "bg-primary/10"}`}>
+                      <Check size={12} className={s.recommended ? "text-white" : "text-primary"} />
                     </div>
-                    <span className="text-base font-medium tracking-tight">{f}</span>
+                    <span className="text-sm md:text-base font-medium tracking-tight">{f}</span>
                   </div>
                 ))}
               </div>
@@ -90,9 +90,9 @@ const Pricing = () => {
               <motion.a
                 whileTap={{ scale: 0.95 }}
                 href="#contact"
-                className={`w-full py-6 rounded-2xl font-black text-lg text-center block transition-all shine-sweep ${
+                className={`w-full py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-sm md:text-lg text-center block transition-all shine-sweep ${
                   s.recommended 
-                    ? "bg-white text-primary hover:bg-white/90" 
+                    ? "bg-white text-primary" 
                     : "bg-primary text-primary-foreground"
                 }`}
               >

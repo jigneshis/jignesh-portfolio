@@ -11,28 +11,27 @@ const socials = [
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-40 relative overflow-hidden">
-      {/* Intense Cinematic Spotlight */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-primary/10 rounded-full blur-[180px] opacity-60 pointer-events-none" />
+    <section id="contact" className="fluid-py relative overflow-hidden">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] md:w-[1200px] h-[400px] md:h-[600px] bg-primary/10 rounded-full blur-[120px] md:blur-[180px] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
-        <div className="glass-card rounded-[4rem] p-16 md:p-32 text-center space-y-16 overflow-hidden relative interactive-card shadow-[inset_0_0_100px_rgba(0,180,216,0.02)]">
+      <div className="container-wide relative z-10">
+        <div className="glass-card rounded-[2.5rem] md:rounded-[4rem] p-10 md:p-24 lg:p-32 text-center space-y-12 md:space-y-16 overflow-hidden relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6 md:space-y-8"
           >
             <div className="inline-flex items-center gap-4">
-              <div className="w-16 h-[1px] bg-primary" />
-              <span className="text-xs text-primary font-black uppercase tracking-[0.5em]">The Next Step</span>
-              <div className="w-16 h-[1px] bg-primary" />
+              <div className="w-10 md:w-16 h-[1px] bg-primary" />
+              <span className="text-[10px] md:text-xs text-primary font-black uppercase tracking-[0.3em]">The Next Step</span>
+              <div className="w-10 md:w-16 h-[1px] bg-primary" />
             </div>
-            <h2 className="font-display text-6xl md:text-8xl lg:text-9xl font-black text-foreground tracking-tighter leading-[0.85]">
+            <h2 className="font-display fluid-h2 font-black text-foreground leading-[0.85]">
               READY TO <br /><span className="text-gradient-nebula">ELEVATE?</span>
             </h2>
-            <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
-              Stop settling for templates. Let's engineer a digital legacy that commands attention and results.
+            <p className="text-muted-foreground text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
+              Stop settling for templates. Let's engineer a digital legacy that commands attention.
             </p>
           </motion.div>
 
@@ -40,46 +39,45 @@ const Contact = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-12"
+            className="flex flex-col items-center gap-10 md:gap-12"
           >
             <motion.a
-              whileHover={{ scale: 1.05, boxShadow: "0 0 80px rgba(0,180,216,0.3)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(255,122,24,0.3)" }}
               whileTap={{ scale: 0.95 }}
               href="mailto:hello@jignesh.dev"
-              className="btn-primary-glow group bg-primary text-primary-foreground font-black text-2xl md:text-3xl px-20 py-10 rounded-[2.5rem] flex items-center gap-5 shadow-[0_25px_80px_rgba(0,180,216,0.2)] shine-sweep"
+              className="btn-primary-glow group bg-primary text-primary-foreground font-black text-xl md:text-3xl px-12 py-6 md:px-20 md:py-10 rounded-2xl md:rounded-[2.5rem] flex items-center gap-4 md:gap-5 shine-sweep"
             >
               Start Your Project
-              <ArrowRight size={40} className="group-hover:translate-x-3 transition-transform duration-500" />
+              <ArrowRight size={32} className="group-hover:translate-x-2 transition-transform duration-500 w-[24px] md:w-[32px]" />
             </motion.a>
 
-            <div className="flex gap-12">
+            <div className="flex gap-8 md:gap-12">
               {socials.map((social) => (
                 <motion.a
                   key={social.name}
-                  whileHover={{ y: -8, color: "hsl(var(--primary))", scale: 1.2 }}
+                  whileHover={{ y: -5, color: "hsl(var(--primary))", scale: 1.15 }}
                   href={social.href}
                   className="text-muted-foreground transition-all duration-300"
                 >
-                  <social.icon size={32} />
+                  <social.icon size={24} className="md:w-[32px]" />
                 </motion.a>
               ))}
             </div>
           </motion.div>
         </div>
 
-        {/* Cinematic Footer */}
-        <footer className="mt-40 pt-12 border-t border-white/[0.05] flex flex-col md:flex-row items-center justify-between gap-10 text-[12px] text-muted-foreground font-black uppercase tracking-[0.3em]">
+        <footer className="mt-24 md:mt-40 pt-10 border-t border-white/[0.05] flex flex-col md:flex-row items-center justify-between gap-8 text-[10px] md:text-[12px] text-muted-foreground font-black uppercase tracking-widest">
           <div className="flex items-center gap-6">
-            <span className="font-display font-black text-foreground text-2xl tracking-tighter">Jig<span className="text-primary italic font-light">nesh</span></span>
+            <span className="font-display font-black text-foreground text-xl tracking-tighter">Jig<span className="text-primary italic font-light">nesh</span></span>
             <span className="opacity-10 w-[1px] h-6 bg-white" />
             <span>© {new Date().getFullYear()} — RAJASTHAN, INDIA</span>
           </div>
-          <div className="flex items-center gap-12">
+          <div className="flex items-center gap-8 md:gap-12 flex-wrap justify-center">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms</a>
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse shadow-[0_0_10px_rgba(0,180,216,0.5)]" />
-              <span className="text-cyan-500/80">Core Systems: Online</span>
+              <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+              <span className="text-cyan-500/80">Systems: Online</span>
             </div>
           </div>
         </footer>

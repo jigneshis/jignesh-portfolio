@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Code2, Figma, Globe, Layers, Monitor, Paintbrush,
   Server, Smartphone, Sparkles, Terminal, Triangle, Zap,
@@ -18,9 +20,9 @@ const techs = [
   { name: "shadcn/ui", icon: Smartphone },
 ];
 
-const TechPill = ({ name, icon: Icon }: { name: string; icon: typeof Code2 }) => (
-  <div className="flex items-center gap-2.5 px-5 py-2.5 bg-secondary/80 rounded-full border border-border/50 text-sm text-foreground whitespace-nowrap hover:border-primary/40 hover:bg-primary/5 hover:shadow-[0_0_20px_-5px_hsl(25_100%_55%/0.2)] transition-all duration-300 cursor-default select-none">
-    <Icon size={15} className="text-primary" />
+const TechPill = ({ name, icon: Icon }: { name: string; icon: any }) => (
+  <div className="flex items-center gap-2.5 px-4 py-2 md:px-6 md:py-3 bg-secondary/80 rounded-full border border-border/50 text-xs md:text-sm text-foreground whitespace-nowrap hover:border-primary/40 hover:bg-primary/5 hover:shadow-[0_0_20px_-5px_hsl(25_100%_55%/0.2)] transition-all duration-300 cursor-default select-none">
+    <Icon size={14} className="text-primary md:w-[16px]" />
     {name}
   </div>
 );
@@ -30,25 +32,25 @@ const TechStack = () => {
   const row2 = [...techs.slice(6), ...techs.slice(0, 6), ...techs.slice(6), ...techs.slice(0, 6)];
 
   return (
-    <section id="tech" className="py-28 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-14">
-        <div className="scroll-reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2.5 mb-5">
+    <section id="tech" className="fluid-py overflow-hidden">
+      <div className="container-wide mb-10 md:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2.5 mb-4">
               <span className="w-2 h-2 rounded-full bg-primary" />
-              <span className="text-sm text-primary font-medium uppercase tracking-wider">Tech Stack</span>
+              <span className="text-[10px] md:text-xs text-primary font-bold uppercase tracking-wider">Tech Stack</span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground">
+            <h2 className="font-display fluid-h2 font-bold text-foreground">
               Tools I build with<span className="text-primary">.</span>
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm max-w-xs">
+          <p className="text-muted-foreground text-sm md:text-base max-w-sm">
             Modern frameworks & tools for websites that are fast, beautiful, and built to last.
           </p>
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 md:space-y-6">
         <div className="flex gap-4 animate-marquee">
           {row1.map((tech, i) => (
             <TechPill key={`a-${tech.name}-${i}`} {...tech} />
