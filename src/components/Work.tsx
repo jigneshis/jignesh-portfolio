@@ -5,28 +5,28 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    name: "FitZone Gym",
-    tags: ["Landing Page", "Premium Design"],
+    name: "Ishant Kumar",
+    tags: ["Video Portfolio", "Creator Site"],
     year: "2024",
-    description: "A bold, high-energy experience for a leading fitness center. Designed for conversion and peak performance.",
+    description: "A video editor's portfolio designed to showcase his work and get more clients through high-impact visual storytelling.",
   },
   {
-    name: "Chai & Co Café",
-    tags: ["Brand Identity", "Full Website"],
+    name: "Samim",
+    tags: ["Editor Site", "Brand Growth"],
     year: "2024",
-    description: "Capturing the essence of specialty chai through a warm, immersive digital storefront.",
+    description: "A specialized portfolio for a video editor focused on showcasing creative work to attract premium brand collaborations.",
   },
   {
-    name: "Studio Luxe Salon",
-    tags: ["UI/UX Design", "Booking Hub"],
+    name: "Flash",
+    tags: ["Visual Effects", "Portfolio"],
     year: "2023",
-    description: "Minimalist luxury for a premium salon. Focusing on high-end visuals and seamless booking.",
+    description: "A high-octane video editor portfolio designed to capture attention and highlight technical editing mastery.",
   },
   {
-    name: "Ajmer Heritage Stays",
-    tags: ["Tourism Site", "Full Build"],
-    year: "2023",
-    description: "Preserving history through a modern lens. A boutique hotel experience translated to web.",
+    name: "Bharat Esports",
+    tags: ["Full Stack", "Gaming Hub"],
+    year: "2024",
+    description: "A comprehensive full-stack platform for esports tournament organizers to manage, track, and host professional events.",
   },
 ];
 
@@ -130,7 +130,7 @@ const Work = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-base md:text-lg max-w-md font-medium">
-            I engineering digital experiences that define the next generation of premium brands.
+            I engineer digital experiences that define the next generation of premium brands.
           </p>
         </motion.div>
 
