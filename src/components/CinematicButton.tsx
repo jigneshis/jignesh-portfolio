@@ -1,12 +1,12 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '../lib/utils';
 
-interface CinematicButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface CinematicButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
   variant?: 'primary' | 'outline';
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const CinematicButton = ({ variant = 'primary', children, className, ...props }: CinematicButtonProps) => {

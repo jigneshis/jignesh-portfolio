@@ -6,6 +6,7 @@ import { ArrowUpRight, Play, Star, ChevronRight, Mail, Github, Twitter, Linkedin
 import GlowBackground from '../components/GlowBackground';
 import GlassCard from '../components/GlassCard';
 import CinematicButton from '../components/CinematicButton';
+import { cn } from '../lib/utils';
 
 const Index = () => {
   const projects = [
