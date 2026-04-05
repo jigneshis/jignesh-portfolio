@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -12,7 +12,7 @@ export function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
     );
 
     const el = ref.current;
@@ -25,4 +25,16 @@ export function useScrollReveal() {
   }, []);
 
   return ref;
+}
+
+export function useCursorGlow() {
+  const [pos, setPos] = useState({ x: -500, y: -500 });
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handler);
+    return () => window.removeEventListener("mousemove", handler);
+  }, []);
+
+  return pos;
 }

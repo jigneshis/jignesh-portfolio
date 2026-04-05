@@ -3,8 +3,8 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Work", href: "#work" },
-  { label: "Tech Stack", href: "#tech" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Stack", href: "#tech" },
+  { label: "Voices", href: "#testimonials" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
@@ -14,36 +14,40 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/60 backdrop-blur-xl border-b border-border/50"
+          : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tight text-foreground">
-          Jig<em className="not-italic font-light italic text-primary">nesh</em>
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="font-display text-2xl font-bold tracking-tight text-foreground group">
+          Jig<span className="italic font-light text-primary transition-all group-hover:tracking-wider">nesh</span>
         </a>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="relative text-sm text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary"
             >
               {link.label}
             </a>
           ))}
+          <div className="w-px h-6 bg-border mx-3" />
           <a
             href="#contact"
-            className="bg-primary text-primary-foreground text-sm font-medium px-5 py-2 rounded-full hover:bg-primary/90 transition-colors"
+            className="relative bg-primary text-primary-foreground text-sm font-medium px-6 py-2.5 rounded-full hover:shadow-[0_0_30px_-5px_hsl(25_100%_55%/0.5)] transition-all duration-300 hover:scale-105"
           >
             Let's Talk
           </a>
@@ -51,36 +55,42 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground p-2 rounded-lg hover:bg-secondary transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border px-6 pb-6 pt-2 space-y-4">
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ${
+          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-background/95 backdrop-blur-xl border-b border-border px-6 pb-8 pt-2 space-y-1">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="block text-lg text-muted-foreground hover:text-foreground transition-colors py-3 border-b border-border/30"
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
-            className="inline-block bg-primary text-primary-foreground text-sm font-medium px-5 py-2 rounded-full"
-          >
-            Let's Talk
-          </a>
+          <div className="pt-4">
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="inline-block bg-primary text-primary-foreground text-sm font-medium px-6 py-2.5 rounded-full"
+            >
+              Let's Talk
+            </a>
+          </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

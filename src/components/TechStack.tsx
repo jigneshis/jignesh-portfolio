@@ -1,16 +1,6 @@
 import {
-  Code2,
-  Figma,
-  Globe,
-  Layers,
-  Monitor,
-  Paintbrush,
-  Server,
-  Smartphone,
-  Sparkles,
-  Terminal,
-  Triangle,
-  Zap,
+  Code2, Figma, Globe, Layers, Monitor, Paintbrush,
+  Server, Smartphone, Sparkles, Terminal, Triangle, Zap,
 } from "lucide-react";
 
 const techs = [
@@ -29,33 +19,44 @@ const techs = [
 ];
 
 const TechPill = ({ name, icon: Icon }: { name: string; icon: typeof Code2 }) => (
-  <div className="flex items-center gap-2 px-4 py-2 bg-secondary rounded-full border border-border text-sm text-foreground whitespace-nowrap hover:border-primary/50 hover:shadow-[0_0_15px_-3px_hsl(var(--primary)/0.3)] transition-all duration-300 cursor-default">
-    <Icon size={16} className="text-primary" />
+  <div className="flex items-center gap-2.5 px-5 py-2.5 bg-secondary/80 rounded-full border border-border/50 text-sm text-foreground whitespace-nowrap hover:border-primary/40 hover:bg-primary/5 hover:shadow-[0_0_20px_-5px_hsl(25_100%_55%/0.2)] transition-all duration-300 cursor-default select-none">
+    <Icon size={15} className="text-primary" />
     {name}
   </div>
 );
 
 const TechStack = () => {
-  const doubled = [...techs, ...techs];
+  const row1 = [...techs, ...techs];
+  const row2 = [...techs.slice(6), ...techs.slice(0, 6), ...techs.slice(6), ...techs.slice(0, 6)];
 
   return (
-    <section id="tech" className="py-24 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 mb-12">
-        <div className="scroll-reveal">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-2 h-2 rounded-full bg-primary" />
-            <span className="text-sm text-primary font-medium">Tech Stack</span>
+    <section id="tech" className="py-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-14">
+        <div className="scroll-reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2.5 mb-5">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span className="text-sm text-primary font-medium uppercase tracking-wider">Tech Stack</span>
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground">
+              Tools I build with<span className="text-primary">.</span>
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-            Tools I build with
-          </h2>
+          <p className="text-muted-foreground text-sm max-w-xs">
+            Modern frameworks & tools for websites that are fast, beautiful, and built to last.
+          </p>
         </div>
       </div>
 
-      <div className="relative">
+      <div className="space-y-4">
         <div className="flex gap-4 animate-marquee">
-          {doubled.map((tech, i) => (
-            <TechPill key={`${tech.name}-${i}`} {...tech} />
+          {row1.map((tech, i) => (
+            <TechPill key={`a-${tech.name}-${i}`} {...tech} />
+          ))}
+        </div>
+        <div className="flex gap-4 animate-marquee-reverse">
+          {row2.map((tech, i) => (
+            <TechPill key={`b-${tech.name}-${i}`} {...tech} />
           ))}
         </div>
       </div>
