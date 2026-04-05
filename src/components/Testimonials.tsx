@@ -36,7 +36,7 @@ const TestimonialCard = ({ quote, name, role, initials }: typeof testimonials[0]
     transition={{ type: "spring", stiffness: 300, damping: 20 }}
     className="flex-shrink-0 w-[400px] sm:w-[500px] glass-card rounded-[2.5rem] p-12 space-y-10 relative group cursor-grab active:cursor-grabbing overflow-hidden interactive-card"
   >
-    <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-40 group-hover:text-primary transition-all duration-700 group-hover:scale-110">
+    <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 group-hover:text-primary transition-all duration-700 group-hover:scale-110">
       <Quote size={100} className="stroke-[1px]" />
     </div>
     
@@ -45,8 +45,8 @@ const TestimonialCard = ({ quote, name, role, initials }: typeof testimonials[0]
         "{quote}"
       </p>
       
-      <div className="flex items-center gap-5 pt-10 border-t border-white/5">
-        <div className="w-16 h-16 rounded-[1.25rem] bg-primary/10 border border-primary/20 flex items-center justify-center text-lg font-black text-primary shadow-[0_0_20px_rgba(255,122,24,0.1)]">
+      <div className="flex items-center gap-5 pt-10 border-t border-white/[0.05]">
+        <div className="w-16 h-16 rounded-[1.25rem] bg-primary/10 border border-primary/20 flex items-center justify-center text-lg font-black text-primary shadow-[0_0_20px_rgba(0,180,216,0.1)]">
           {initials}
         </div>
         <div>
@@ -61,9 +61,6 @@ const TestimonialCard = ({ quote, name, role, initials }: typeof testimonials[0]
 const Testimonials = () => {
   return (
     <section id="testimonials" className="py-40 overflow-hidden relative">
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-mesh opacity-30 pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +74,7 @@ const Testimonials = () => {
             <div className="w-12 h-[1px] bg-primary" />
           </div>
           <h2 className="font-display text-6xl sm:text-7xl font-bold text-foreground tracking-tighter">
-            Loved by <span className="text-gradient-orange">Visionaries.</span>
+            Loved by <span className="text-gradient-nebula">Visionaries.</span>
           </h2>
         </motion.div>
       </div>
@@ -98,8 +95,8 @@ const Testimonials = () => {
         </motion.div>
         
         {/* Faders */}
-        <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-64 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-[#050507] to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-64 bg-gradient-to-l from-[#050507] to-transparent z-10 pointer-events-none" />
       </div>
     </section>
   );

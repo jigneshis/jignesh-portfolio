@@ -33,7 +33,7 @@ const Hero = () => {
         {/* Availability badge */}
         <motion.div
           variants={itemVariants}
-          className="inline-flex items-center gap-2.5 border border-white/10 bg-white/5 backdrop-blur-sm rounded-full px-6 py-2.5 text-[13px] text-primary mb-12 uppercase tracking-widest font-bold"
+          className="inline-flex items-center gap-2.5 border border-white/5 bg-white/[0.03] backdrop-blur-sm rounded-full px-6 py-2.5 text-[13px] text-primary mb-12 uppercase tracking-widest font-bold"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full rounded-full bg-primary animate-ping opacity-75" />
@@ -60,7 +60,7 @@ const Hero = () => {
             variants={itemVariants}
             className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter leading-[0.9]"
           >
-            <span className="text-gradient-orange drop-shadow-[0_0_30px_rgba(255,122,24,0.3)]">better.</span>
+            <span className="text-gradient-nebula drop-shadow-[0_0_30px_rgba(0,180,216,0.2)]">better.</span>
           </motion.h1>
         </div>
 
@@ -88,7 +88,7 @@ const Hero = () => {
             <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
           </motion.a>
           <motion.a
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.05)" }}
             whileTap={{ scale: 0.98 }}
             href="#pricing"
             className="glass-card text-foreground font-bold px-12 py-6 rounded-full text-lg transition-all"

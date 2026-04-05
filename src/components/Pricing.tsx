@@ -39,7 +39,7 @@ const Pricing = () => {
             <span className="text-xs font-black uppercase tracking-[0.3em] text-primary">Service Models</span>
           </motion.div>
           <h2 className="font-display text-6xl sm:text-7xl font-bold text-foreground tracking-tighter">
-            Invest in your <span className="text-gradient-orange">Identity.</span>
+            Invest in your <span className="text-gradient-nebula">Identity.</span>
           </h2>
         </div>
 
@@ -54,7 +54,7 @@ const Pricing = () => {
               whileHover={{ y: -15 }}
               className={`relative rounded-[3rem] p-12 space-y-10 transition-all duration-700 interactive-card ${
                 s.recommended 
-                  ? "bg-primary text-primary-foreground border-none scale-110 z-10 shadow-[0_30px_100px_rgba(255,122,24,0.3)]" 
+                  ? "bg-primary text-primary-foreground border-none scale-110 z-10 shadow-[0_30px_100px_rgba(0,180,216,0.2)]" 
                   : "glass-card hover:border-primary/40"
               }`}
             >
@@ -93,7 +93,7 @@ const Pricing = () => {
                 className={`w-full py-6 rounded-2xl font-black text-lg text-center block transition-all shine-sweep ${
                   s.recommended 
                     ? "bg-white text-primary hover:bg-white/90" 
-                    : "bg-primary text-primary-foreground hover:shadow-[0_0_40px_rgba(255,122,24,0.4)]"
+                    : "bg-primary text-primary-foreground"
                 }`}
               >
                 Start Journey
