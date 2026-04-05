@@ -1,17 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Instagram, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Instagram, MessageCircle, Phone, Globe, Heart } from "lucide-react";
 
 const socials = [
-  { name: "Twitter", icon: Twitter, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Instagram", icon: Instagram, href: "#" },
+  { name: "Instagram", icon: Instagram, href: "https://instagram.com/jigneshis" },
+  { name: "WhatsApp", icon: MessageCircle, href: "https://wa.me/919351090785" },
+  { name: "Call", icon: Phone, href: "tel:+919351090785" },
 ];
 
 const Contact = () => {
   return (
     <section id="contact" className="fluid-py relative overflow-hidden">
+      {/* Decorative background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] md:w-[1200px] h-[400px] md:h-[600px] bg-primary/10 rounded-full blur-[120px] md:blur-[180px] opacity-40 pointer-events-none" />
 
       <div className="container-wide relative z-10">
@@ -57,28 +58,72 @@ const Contact = () => {
                   key={social.name}
                   whileHover={{ y: -5, color: "hsl(var(--primary))", scale: 1.15 }}
                   href={social.href}
-                  className="text-muted-foreground transition-all duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-all duration-300 flex flex-col items-center gap-2 group"
                 >
                   <social.icon size={24} className="md:w-[32px]" />
+                  <span className="text-[9px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    {social.name}
+                  </span>
                 </motion.a>
               ))}
             </div>
           </motion.div>
         </div>
 
-        <footer className="mt-24 md:mt-40 pt-10 border-t border-white/[0.05] flex flex-col md:flex-row items-center justify-between gap-8 text-[10px] md:text-[12px] text-muted-foreground font-black uppercase tracking-widest">
-          <div className="flex items-center gap-6">
-            <span className="font-display font-black text-foreground text-xl tracking-tighter">Jig<span className="text-primary italic font-light">nesh</span></span>
-            <span className="opacity-10 w-[1px] h-6 bg-white" />
-            <span>© {new Date().getFullYear()} — RAJASTHAN, INDIA</span>
-          </div>
-          <div className="flex items-center gap-8 md:gap-12 flex-wrap justify-center">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms</a>
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
-              <span className="text-cyan-500/80">Systems: Online</span>
+        {/* Enhanced Footer */}
+        <footer className="mt-32 md:mt-48 pb-12 border-t border-white/[0.05]">
+          <div className="pt-16 grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            {/* Left: Brand & Location */}
+            <div className="space-y-6">
+              <div className="font-display font-black text-foreground text-3xl tracking-tighter">
+                Jig<span className="text-primary italic font-light">nesh</span>
+              </div>
+              <div className="flex flex-col gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Globe size={14} className="text-primary" />
+                  <span>Rajasthan, India</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                  <span className="text-cyan-500/80">Available Worldwide</span>
+                </div>
+              </div>
             </div>
+
+            {/* Center: Navigation/Links */}
+            <div className="flex flex-col gap-4 text-center md:text-left">
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Sitemap</span>
+              <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-3 text-[12px] font-bold uppercase tracking-widest text-foreground/60">
+                <a href="#work" className="hover:text-primary transition-colors">Portfolio</a>
+                <a href="#tech" className="hover:text-primary transition-colors">Stack</a>
+                <a href="#pricing" className="hover:text-primary transition-colors">Services</a>
+                <a href="/bio" className="hover:text-primary transition-colors">Socials</a>
+              </div>
+            </div>
+
+            {/* Right: Credits */}
+            <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
+              <div className="flex flex-col gap-1">
+                <span className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">© {new Date().getFullYear()} — JIGNESHIS</span>
+                <span className="text-[10px] font-medium text-muted-foreground/40 italic">All rights reserved.</span>
+              </div>
+              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60">
+                <span>Handcrafted with</span>
+                <Heart size={10} className="text-primary fill-primary animate-pulse" />
+                <span>by Jignesh</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="mt-16 flex flex-col sm:flex-row justify-between items-center gap-6 pt-8 border-t border-white/[0.03] text-[9px] font-black uppercase tracking-[0.3em] text-muted-foreground/30">
+            <div className="flex gap-8">
+              <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
+              <a href="#" className="hover:text-foreground transition-colors">Terms</a>
+            </div>
+            <span>v2.0.24 — Digital Artifact</span>
           </div>
         </footer>
       </div>
