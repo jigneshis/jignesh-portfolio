@@ -29,7 +29,7 @@ const Index = () => {
 
       {/* Dynamic Cinematic Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Warm Orange Light Source */}
+        {/* Cool Purple Light Source */}
         <motion.div
           animate={{
             x: [0, 100, 0],
@@ -37,10 +37,10 @@ const Index = () => {
             opacity: [0.08, 0.12, 0.08]
           }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-1/4 -left-1/4 w-full h-full bg-[radial-gradient(circle,rgba(255,122,24,0.12)_0%,transparent_70%)]"
+          className="absolute -top-1/4 -left-1/4 w-full h-full bg-[radial-gradient(circle,rgba(123,92,255,0.12)_0%,transparent_70%)]"
         />
         
-        {/* Soft Amber Light Source */}
+        {/* Electric Blue Light Source */}
         <motion.div
           animate={{
             x: [0, -80, 0],
@@ -48,7 +48,7 @@ const Index = () => {
             opacity: [0.06, 0.1, 0.06]
           }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-[radial-gradient(circle,rgba(255,163,100,0.1)_0%,transparent_70%)]"
+          className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-[radial-gradient(circle,rgba(0,210,255,0.1)_0%,transparent_70%)]"
         />
 
         {/* Deep Dark Spot */}

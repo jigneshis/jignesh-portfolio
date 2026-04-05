@@ -42,7 +42,7 @@ const Contact = () => {
             className="flex flex-col items-center gap-10 md:gap-12"
           >
             <motion.a
-              whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(255,122,24,0.3)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(123,92,255,0.3)" }}
               whileTap={{ scale: 0.95 }}
               href="mailto:hello@jignesh.dev"
               className="btn-primary-glow group bg-primary text-primary-foreground font-black text-xl md:text-3xl px-12 py-6 md:px-20 md:py-10 rounded-2xl md:rounded-[2.5rem] flex items-center gap-4 md:gap-5 shine-sweep"

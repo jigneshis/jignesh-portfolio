@@ -12,19 +12,19 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 4%;
     --popover-foreground: 0 0% 98%;
-    --primary: 25 100% 55%; /* Premium Orange #ff7a18 */
+    --primary: 250 100% 68%; /* Premium Purple #7B5CFF */
     --primary-foreground: 0 0% 100%;
     --secondary: 240 5% 10%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 5% 10%;
     --muted-foreground: 240 5% 60%;
-    --accent: 25 100% 55%;
+    --accent: 250 100% 68%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 240 5% 12%;
     --input: 240 5% 12%;
-    --ring: 25 100% 55%;
+    --ring: 250 100% 68%;
     --radius: 1rem;
   }
 }
@@ -83,7 +83,7 @@
 }
 
 .text-gradient-nebula {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a18] via-[#ffa364] to-[#ff7a18];
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#7B5CFF] via-[#00D2FF] to-[#7B5CFF];
   background-size: 200% auto;
   animation: textShine 5s linear infinite;
 }
@@ -124,7 +124,7 @@
 }
 
 .btn-primary-glow:hover {
-  box-shadow: 0 0 30px rgba(255, 122, 24, 0.3);
+  box-shadow: 0 0 30px rgba(123, 92, 255, 0.3);
 }
 
 /* Glass Shine for Navbar */
