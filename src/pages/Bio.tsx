@@ -2,47 +2,39 @@
 
 import { motion } from "framer-motion";
 import { 
-  Globe, 
-  Instagram, 
-  Github, 
-  MessageCircle, 
-  Calendar, 
   ArrowRight,
-  ExternalLink,
-  Linkedin
 } from "lucide-react";
+import { 
+  SiSpotify, 
+  SiSteam, 
+  SiGithub, 
+  SiProton 
+} from "react-icons/si";
 
 const links = [
   {
-    title: "View My Portfolio",
-    href: "/",
-    icon: Globe,
-    highlight: true,
+    title: "Spotify",
+    href: "https://open.spotify.com/user/31kq2nm7kbg3czdn747g6loshc7e?si=3bb8d14b797e4a78",
+    icon: SiSpotify,
+    color: "#1DB954",
   },
   {
-    title: "Get a Website",
-    href: "#",
-    icon: ExternalLink,
+    title: "Email",
+    href: "mailto:jigneshis@proton.me",
+    icon: SiProton,
+    color: "#6D4AFF",
   },
   {
-    title: "Book a Call",
-    href: "#",
-    icon: Calendar,
+    title: "Steam",
+    href: "https://steamcommunity.com/id/jigneshis/",
+    icon: SiSteam,
+    color: "#00ADEE",
   },
   {
-    title: "WhatsApp Me",
-    href: "https://wa.me/#",
-    icon: MessageCircle,
-  },
-  {
-    title: "My Instagram",
-    href: "https://instagram.com/#",
-    icon: Instagram,
-  },
-  {
-    title: "My GitHub",
-    href: "https://github.com/#",
-    icon: Github,
+    title: "GitHub",
+    href: "https://github.com/jigneshis",
+    icon: SiGithub,
+    color: "#ffffff",
   },
 ];
 
@@ -74,12 +66,12 @@ const Bio = () => {
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-4">
             <h1 className="text-3xl font-display font-bold tracking-tight">
               Jig<span className="italic font-light text-orange-500">nesh</span>
             </h1>
-            <p className="text-zinc-400 font-medium text-sm max-w-[280px]">
-              I craft premium websites that convert visitors into clients.
+            <p className="text-zinc-400 font-medium text-[15px] leading-relaxed max-w-[320px]">
+              Hi jignesh wadhwani this side! here are all my socials :)
             </p>
           </div>
 
@@ -99,49 +91,37 @@ const Bio = () => {
             <motion.a
               key={link.title}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`group relative flex items-center justify-between p-4 rounded-2xl transition-all duration-300 border overflow-hidden ${
-                link.highlight 
-                  ? "bg-white/10 border-white/20" 
-                  : "bg-white/5 border-white/10"
-              } hover:border-orange-500/50 hover:shadow-[0_0_25px_rgba(255,122,24,0.15)]`}
+              className="group relative flex items-center justify-between p-4 rounded-2xl transition-all duration-300 border bg-white/5 border-white/10 overflow-hidden hover:border-white/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.05)]"
             >
               {/* Shine effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.05] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               
               <div className="flex items-center gap-4 relative z-10">
-                <div className={`p-2 rounded-xl bg-white/5 border border-white/10 group-hover:text-orange-500 transition-colors`}>
-                  <link.icon size={18} />
+                <div 
+                  className="p-2.5 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 group-hover:scale-110"
+                  style={{ color: link.color }}
+                >
+                  <link.icon size={20} />
                 </div>
                 <span className="font-bold tracking-tight text-[15px] group-hover:translate-x-1 transition-transform">
                   {link.title}
                 </span>
               </div>
               
-              <ArrowRight size={16} className="text-zinc-500 group-hover:text-orange-500 group-hover:translate-x-1 transition-all" />
+              <ArrowRight size={16} className="text-zinc-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
             </motion.a>
           ))}
         </div>
 
         {/* Footer */}
         <footer className="mt-16 flex flex-col items-center space-y-8">
-          <div className="flex gap-6">
-            {[Instagram, Linkedin, Github].map((Icon, i) => (
-              <motion.a
-                key={i}
-                href="#"
-                whileHover={{ y: -3, color: "#ff7a18" }}
-                className="text-zinc-500 transition-colors"
-              >
-                <Icon size={20} />
-              </motion.a>
-            ))}
-          </div>
-          
           <div className="flex flex-col items-center gap-2">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">
               Built by Jignesh
