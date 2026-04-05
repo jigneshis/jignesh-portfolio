@@ -19,7 +19,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#050507] selection:bg-primary/30 selection:text-white">
-      <div className="grain-overlay" />
       <div className="vignette" />
 
       {/* Scroll Progress Bar */}
