@@ -67,7 +67,7 @@ const Bio = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-orange-500 to-[#5227FF] rounded-full blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative w-24 h-24 rounded-full border-2 border-white/10 overflow-hidden bg-[#111]">
               <img 
-                src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jignesh" 
+                src="/pfp.png" 
                 alt="Jignesh"
                 className="w-full h-full object-cover"
               />
