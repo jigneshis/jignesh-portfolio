@@ -24,19 +24,19 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] md:w-fit">
+    <div className="fixed top-4 md:top-5 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-1.5rem)] md:w-fit">
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`relative flex items-center justify-between gap-4 md:gap-8 px-4 py-2.5 md:px-8 md:py-4 rounded-[2rem] border transition-all duration-500 glass-shine ${
+        className={`relative flex items-center justify-between gap-4 md:gap-8 px-4 py-1.5 md:px-6 md:py-2 rounded-2xl md:rounded-[1.5rem] border transition-all duration-500 glass-shine ${
           scrolled 
-            ? "bg-black/60 backdrop-blur-2xl border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]" 
-            : "bg-white/[0.05] backdrop-blur-xl border-white/10 shadow-[0_10px_30px_rgba(255,122,24,0.05)]"
+            ? "bg-black/70 backdrop-blur-2xl border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.2)]" 
+            : "bg-white/[0.04] backdrop-blur-xl border-white/10 shadow-[0_5px_15px_rgba(255,122,24,0.03)]"
         }`}
       >
         {/* Logo */}
-        <a href="#" className="font-display text-lg md:text-2xl font-bold tracking-tight text-foreground whitespace-nowrap group">
+        <a href="#" className="font-display text-base md:text-xl font-bold tracking-tight text-foreground whitespace-nowrap group">
           Jig<span className="italic font-light text-primary transition-all group-hover:tracking-wider">nesh</span>
         </a>
 
@@ -48,13 +48,13 @@ const Navbar = () => {
               href={link.href}
               onMouseEnter={() => setHoveredLink(link.label)}
               onMouseLeave={() => setHoveredLink(null)}
-              className="relative text-[11px] xl:text-[13px] font-bold text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-2 group uppercase tracking-widest"
+              className="relative text-[11px] md:text-[12px] font-bold text-muted-foreground hover:text-foreground transition-all duration-300 px-3.5 py-1.5 group uppercase tracking-widest"
             >
               <span className="relative z-10">{link.label}</span>
               <motion.span
                 initial={{ width: 0, left: 0 }}
-                animate={{ width: hoveredLink === link.label ? "50%" : 0 }}
-                className="absolute bottom-1 left-1/2 -translate-x-1/2 h-[1px] bg-primary/60 pointer-events-none"
+                animate={{ width: hoveredLink === link.label ? "40%" : 0 }}
+                className="absolute bottom-1 left-1/2 -translate-x-1/2 h-[1px] bg-primary/40 pointer-events-none"
               />
             </a>
           ))}
@@ -63,20 +63,20 @@ const Navbar = () => {
         {/* CTA Button */}
         <div className="flex items-center gap-2">
           <motion.a
-            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(255,122,24,0.3)" }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.03, boxShadow: "0 0 20px rgba(255,122,24,0.2)" }}
+            whileTap={{ scale: 0.97 }}
             href="#contact"
-            className="hidden sm:block bg-primary text-primary-foreground text-[11px] font-black px-5 py-2.5 md:px-7 md:py-3 rounded-full uppercase tracking-widest shine-sweep"
+            className="hidden sm:block bg-primary text-primary-foreground text-[10px] font-black px-4 py-1.5 md:px-5 md:py-2 rounded-full uppercase tracking-widest shine-sweep"
           >
             Let's Talk
           </motion.a>
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden text-foreground p-2 rounded-full hover:bg-white/5 transition-colors"
+            className="md:hidden text-foreground p-1.5 rounded-lg hover:bg-white/5 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={16} /> : <Menu size={16} />}
           </button>
         </div>
       </motion.nav>
@@ -84,26 +84,26 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            initial={{ opacity: 0, y: 10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="absolute top-full left-0 right-0 mt-4 md:hidden bg-black/90 backdrop-blur-3xl border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl p-6 space-y-4"
+            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+            className="absolute top-full left-0 right-0 mt-3 md:hidden bg-black/95 backdrop-blur-3xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl p-5 space-y-3"
           >
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-lg font-display font-bold text-muted-foreground hover:text-primary transition-colors py-2"
+                className="block text-base font-display font-bold text-muted-foreground hover:text-primary transition-colors py-1.5"
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-4 border-t border-white/5 sm:hidden">
+            <div className="pt-3 border-t border-white/5 sm:hidden">
               <a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
-                className="w-full text-center block bg-primary text-primary-foreground font-black py-4 rounded-2xl uppercase tracking-widest"
+                className="w-full text-center block bg-primary text-primary-foreground font-black py-3 rounded-xl uppercase tracking-widest text-xs"
               >
                 Let's Talk
               </a>
