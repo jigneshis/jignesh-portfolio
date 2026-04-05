@@ -1,125 +1,114 @@
-import { useState } from "react";
+"use client";
+
+import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 const projects = [
   {
     name: "FitZone Gym",
-    tags: ["Landing Page", "Responsive"],
+    tags: ["Landing Page", "Premium Design"],
     year: "2024",
-    description: "A bold, energetic landing page for Ajmer's fastest-growing fitness center. Mobile-first design with class schedules and membership CTAs.",
+    description: "A bold, high-energy experience for a leading fitness center. Designed for conversion and peak performance.",
   },
   {
     name: "Chai & Co Café",
-    tags: ["Full Website", "Menu System"],
+    tags: ["Brand Identity", "Full Website"],
     year: "2024",
-    description: "Warm, inviting multi-page website for a specialty chai café. Interactive menu, location map, and online ordering integration.",
+    description: "Capturing the essence of specialty chai through a warm, immersive digital storefront.",
   },
   {
     name: "Studio Luxe Salon",
-    tags: ["Landing Page", "Booking"],
+    tags: ["UI/UX Design", "Booking Hub"],
     year: "2023",
-    description: "Elegant, minimal one-pager for a premium salon. Integrated booking widget, service showcase, and Instagram feed.",
+    description: "Minimalist luxury for a premium salon. Focusing on high-end visuals and seamless booking.",
   },
   {
     name: "Ajmer Heritage Stays",
-    tags: ["Full Website", "Gallery"],
+    tags: ["Tourism Site", "Full Build"],
     year: "2023",
-    description: "Heritage-inspired website for a boutique homestay. Rich photo gallery, room listings, and direct WhatsApp booking.",
-  },
-  {
-    name: "DevCraft Agency",
-    tags: ["Portfolio", "SaaS"],
-    year: "2023",
-    description: "Clean, dark-themed portfolio for a dev agency. Case studies, team section, and custom contact form with email integration.",
+    description: "Preserving history through a modern lens. A boutique hotel experience translated to web.",
   },
 ];
 
 const Work = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
-    <section id="work" className="py-28">
+    <section id="work" className="py-32 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="scroll-reveal mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div>
-            <div className="flex items-center gap-2.5 mb-5">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              <span className="text-sm text-primary font-medium uppercase tracking-wider">Work</span>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-24 flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-[1px] bg-primary" />
+              <span className="text-sm text-primary font-bold uppercase tracking-[0.2em]">Selected Work</span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground">
-              Selected projects<span className="text-primary">.</span>
+            <h2 className="font-display text-5xl sm:text-6xl font-bold text-foreground tracking-tight">
+              Crafting Digital<br /><span className="text-gradient-orange">Masterpieces.</span>
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm max-w-xs">
-            A few recent builds for businesses that needed more than just a "website."
+          <p className="text-muted-foreground text-lg max-w-sm leading-relaxed">
+            I don't just build websites; I create digital experiences that define brands.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="scroll-reveal">
+        <div className="grid gap-1">
           {projects.map((project, i) => (
-            <div
+            <motion.div
               key={project.name}
-              className="group relative"
-              onMouseEnter={() => setHoveredIndex(i)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className="group relative border-t border-white/5 last:border-b"
             >
-              {/* Gradient line */}
-              <div className={`gradient-line transition-opacity duration-300 ${hoveredIndex === i ? 'opacity-100' : 'opacity-30'}`} />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="py-7 md:py-10 px-2 md:px-6 cursor-pointer transition-all duration-300 hover:px-8">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-6 md:gap-10 flex-1 min-w-0">
-                    {/* Number */}
-                    <span className="text-stroke font-display text-3xl md:text-4xl font-bold hidden sm:block w-16">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+              <div className="relative py-12 md:py-20 px-4 md:px-8 flex flex-col md:flex-row md:items-center justify-between gap-8 cursor-pointer overflow-hidden transition-all duration-500 group-hover:px-12">
+                <div className="flex items-center gap-10 flex-1">
+                  <span className="text-stroke font-display text-4xl md:text-5xl font-bold opacity-30 group-hover:opacity-100 group-hover:text-primary transition-all duration-500">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
 
-                    {/* Name + tags */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-4 flex-wrap">
-                        <h3 className="font-display text-xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                          {project.name}
-                        </h3>
-                        <div className="hidden sm:flex gap-2">
-                          {project.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-[11px] px-3 py-1 rounded-full border border-border/50 text-muted-foreground uppercase tracking-wider"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Expandable description */}
-                      <div
-                        className={`overflow-hidden transition-all duration-500 ease-out ${
-                          hoveredIndex === i ? "max-h-20 opacity-100 mt-3" : "max-h-0 opacity-0"
-                        }`}
-                      >
-                        <p className="text-sm text-muted-foreground max-w-lg leading-relaxed">
-                          {project.description}
-                        </p>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4 flex-wrap">
+                      <h3 className="font-display text-3xl md:text-5xl font-bold text-foreground group-hover:translate-x-2 transition-transform duration-500">
+                        {project.name}
+                      </h3>
+                      <div className="flex gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[10px] px-3 py-1 rounded-full glass-card text-muted-foreground uppercase tracking-widest"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
+                    <p className="text-muted-foreground max-w-md line-clamp-2 group-hover:text-foreground/80 transition-colors">
+                      {project.description}
+                    </p>
                   </div>
+                </div>
 
-                  {/* Year + Arrow */}
-                  <div className="flex items-center gap-4 md:gap-8">
-                    <span className="text-sm text-muted-foreground hidden md:block">{project.year}</span>
-                    <div className="w-10 h-10 rounded-full border border-border group-hover:border-primary/50 group-hover:bg-primary/10 flex items-center justify-center transition-all duration-300">
-                      <ArrowUpRight
-                        size={16}
-                        className="text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
-                      />
-                    </div>
+                <div className="flex items-center gap-12 self-end md:self-center">
+                  <span className="text-sm font-mono text-muted-foreground/50 group-hover:text-primary transition-colors">
+                    {project.year}
+                  </span>
+                  <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500 rotate-[-45deg] group-hover:rotate-0">
+                    <ArrowUpRight
+                      size={24}
+                      className="text-foreground group-hover:text-primary-foreground"
+                    />
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-          <div className="gradient-line opacity-30" />
         </div>
       </div>
     </section>

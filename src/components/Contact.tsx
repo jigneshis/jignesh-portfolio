@@ -1,84 +1,95 @@
-import { Mail, MapPin, ArrowUpRight } from "lucide-react";
+"use client";
+
+import { motion } from "framer-motion";
+import { Mail, MapPin, ArrowRight, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const socials = [
-  { name: "Twitter / X", href: "#" },
-  { name: "LinkedIn", href: "#" },
-  { name: "GitHub", href: "#" },
-  { name: "Instagram", href: "#" },
+  { name: "Twitter", icon: Twitter, href: "#" },
+  { name: "LinkedIn", icon: Linkedin, href: "#" },
+  { name: "Instagram", icon: Instagram, href: "#" },
 ];
 
 const Contact = () => {
   return (
-    <>
-      <section id="contact" className="py-28">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="scroll-reveal grid md:grid-cols-2 gap-16 items-center">
-            {/* Left */}
-            <div className="space-y-8">
-              <div>
-                <div className="flex items-center gap-2.5 mb-5">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-sm text-primary font-medium uppercase tracking-wider">Contact</span>
-                </div>
-                <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground leading-tight">
-                  Let's build
-                  <br />
-                  something
-                  <br />
-                  <span className="text-primary">great</span>.
-                </h2>
-              </div>
-              <p className="text-muted-foreground max-w-sm leading-relaxed">
-                Got a project in mind? Or just want to chat about an idea? I'd love to hear from you.
-              </p>
-              <a
-                href="mailto:hello@jignesh.dev"
-                className="group inline-flex items-center gap-3 text-foreground font-medium text-lg hover:text-primary transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Mail size={18} className="text-primary" />
-                </div>
-                hello@jignesh.dev
-              </a>
-            </div>
+    <section id="contact" className="py-32 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 rounded-full blur-[150px] opacity-50" />
 
-            {/* Right — socials */}
-            <div className="space-y-4">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+        <div className="glass-card rounded-[3rem] p-12 md:p-24 text-center space-y-12 overflow-hidden relative">
+          {/* Animated pulsing background dot */}
+          <div className="absolute top-0 right-0 p-12 opacity-5">
+            <div className="w-96 h-96 bg-primary rounded-full animate-ping" />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div className="inline-flex items-center gap-3">
+              <div className="w-12 h-[1px] bg-primary" />
+              <span className="text-sm text-primary font-black uppercase tracking-[0.4em]">Let's Create</span>
+              <div className="w-12 h-[1px] bg-primary" />
+            </div>
+            <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tighter leading-none">
+              READY TO <span className="text-gradient-orange">STAND OUT?</span>
+            </h2>
+            <p className="text-muted-foreground text-xl max-w-xl mx-auto leading-relaxed">
+              Stop settling for templates. Let's build a digital experience that actually represents your brand.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center gap-8"
+          >
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="mailto:hello@jignesh.dev"
+              className="btn-primary-glow group bg-primary text-primary-foreground font-black text-2xl px-16 py-8 rounded-[2rem] flex items-center gap-4 shadow-[0_20px_60px_rgba(255,122,24,0.4)]"
+            >
+              Start Your Project
+              <ArrowRight size={32} className="group-hover:translate-x-2 transition-transform" />
+            </motion.a>
+
+            <div className="flex gap-10">
               {socials.map((social) => (
-                <a
+                <motion.a
                   key={social.name}
+                  whileHover={{ y: -5, color: "hsl(var(--primary))" }}
                   href={social.href}
-                  className="group flex items-center justify-between py-5 px-4 border-b border-border/30 hover:border-primary/30 transition-colors"
+                  className="text-muted-foreground transition-colors"
                 >
-                  <span className="text-lg text-muted-foreground group-hover:text-foreground transition-colors">
-                    {social.name}
-                  </span>
-                  <ArrowUpRight
-                    size={18}
-                    className="text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
-                  />
-                </a>
+                  <social.icon size={28} />
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border/30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <span className="font-display font-bold text-foreground">Jig<span className="italic font-light text-primary">nesh</span></span>
-            <span className="text-border">·</span>
-            <span>© {new Date().getFullYear()}</span>
+        {/* Footer */}
+        <footer className="mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-muted-foreground font-medium tracking-wide">
+          <div className="flex items-center gap-4">
+            <span className="font-display font-bold text-foreground text-xl">Jig<span className="text-primary italic">nesh</span></span>
+            <span className="opacity-20">|</span>
+            <span>© {new Date().getFullYear()} — AJMER, INDIA</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <MapPin size={13} />
-            <span>Ajmer, India</span>
+          <div className="flex items-center gap-8">
+            <a href="#" className="hover:text-primary transition-colors">Privacy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms</a>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span>System Status: Optimal</span>
+            </div>
           </div>
-        </div>
-      </footer>
-    </>
+        </footer>
+      </div>
+    </section>
   );
 };
 

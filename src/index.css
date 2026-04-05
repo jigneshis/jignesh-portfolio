@@ -6,23 +6,23 @@
 
 @layer base {
   :root {
-    --background: 0 0% 3%;
-    --foreground: 40 20% 95%;
+    --background: 0 0% 2%; /* Deep #050505 */
+    --foreground: 40 20% 98%;
 
-    --card: 0 0% 6%;
-    --card-foreground: 40 20% 95%;
+    --card: 0 0% 4%;
+    --card-foreground: 40 20% 98%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 40 20% 98%;
 
-    --primary: 25 100% 55%;
+    --primary: 25 100% 55%; /* Warm Orange #ff7a18 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 40 20% 95%;
+    --secondary: 0 0% 6%;
+    --secondary-foreground: 40 20% 98%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 50%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
 
     --accent: 25 100% 55%;
     --accent-foreground: 0 0% 100%;
@@ -30,20 +30,11 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
     --ring: 25 100% 55%;
 
-    --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 5%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 25 100% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 0 0% 12%;
-    --sidebar-ring: 25 100% 55%;
+    --radius: 1rem;
   }
 }
 
@@ -52,36 +43,61 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Space Grotesk', system-ui, sans-serif;
+    overflow-x: hidden;
   }
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* ===== HEADING FONT ===== */
+/* ===== TYPOGRAPHY ===== */
 .font-display {
   font-family: 'Syne', sans-serif;
+  letter-spacing: -0.02em;
 }
 
-/* ===== GRAIN OVERLAY ===== */
-.grain::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+h1, h2, h3 {
+  line-height: 1.1;
 }
 
-/* ===== GLOW EFFECTS ===== */
-.glow-orange {
-  box-shadow: 0 0 60px -10px hsl(25 100% 55% / 0.25);
+/* ===== GLASSMORPHISM ===== */
+.glass-card {
+  @apply bg-white/[0.03] backdrop-blur-md border border-white/10;
 }
-.glow-text {
-  text-shadow: 0 0 80px hsl(25 100% 55% / 0.4);
+
+.glass-nav {
+  @apply bg-black/40 backdrop-blur-xl border-b border-white/5;
+}
+
+/* ===== PREMIUM GRADIENTS ===== */
+.bg-mesh {
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(255, 122, 24, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(255, 122, 24, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 122, 24, 0.02) 0%, transparent 50%);
+}
+
+.text-gradient-orange {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a18] via-[#ffa364] to-[#ff7a18];
+  background-size: 200% auto;
+  animation: textShine 4s linear infinite;
+}
+
+@keyframes textShine {
+  to { background-position: 200% center; }
+}
+
+/* ===== BUTTON GLOW ===== */
+.btn-primary-glow {
+  @apply relative overflow-hidden transition-all duration-300;
+  box-shadow: 0 0 0 0 rgba(255, 122, 24, 0);
+}
+
+.btn-primary-glow:hover {
+  @apply scale-[1.03];
+  box-shadow: 0 0 30px 2px rgba(255, 122, 24, 0.4);
 }
 
 /* ===== MARQUEE ===== */
@@ -90,81 +106,24 @@
   100% { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee 25s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 .animate-marquee-slow {
-  animation: marquee 45s linear infinite;
-}
-.animate-marquee-reverse {
-  animation: marquee 35s linear infinite reverse;
+  animation: marquee 50s linear infinite;
 }
 
-/* ===== SCROLL REVEAL ===== */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.scroll-reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-.scroll-reveal-delay-1 { transition-delay: 0.1s; }
-.scroll-reveal-delay-2 { transition-delay: 0.2s; }
-.scroll-reveal-delay-3 { transition-delay: 0.3s; }
-
-/* ===== ANIMATED DOT ===== */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 hsl(25 100% 55% / 0.5); }
-  50% { opacity: 0.8; box-shadow: 0 0 0 8px hsl(25 100% 55% / 0); }
-}
-.animate-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+/* ===== MESH ANIMATION ===== */
+.animate-mesh {
+  animation: meshFlow 20s ease infinite alternate;
 }
 
-/* ===== GRADIENT LINE ===== */
-.gradient-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, hsl(25 100% 55% / 0.3), transparent);
+@keyframes meshFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
 
-/* ===== FLOATING ===== */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-8px) rotate(1deg); }
-  66% { transform: translateY(4px) rotate(-1deg); }
-}
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-.animate-float-delayed {
-  animation: float 8s ease-in-out 2s infinite;
-}
-
-/* ===== CURSOR GLOW (desktop) ===== */
-.cursor-glow {
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  background: radial-gradient(circle, hsl(25 100% 55% / 0.06), transparent 70%);
-  transform: translate(-50%, -50%);
-  transition: left 0.3s ease, top 0.3s ease;
-}
-
-/* ===== NUMBER STROKE ===== */
+/* ===== STROKE TEXT ===== */
 .text-stroke {
-  -webkit-text-stroke: 1px hsl(0 0% 20%);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
   color: transparent;
-}
-
-/* ===== HOVER CARD TILT (via CSS) ===== */
-.tilt-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.tilt-card:hover {
-  transform: translateY(-4px) rotateX(2deg);
-  box-shadow: 0 20px 60px -15px hsl(25 100% 55% / 0.15);
 }
