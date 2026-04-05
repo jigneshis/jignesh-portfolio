@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
-import { useCursorGlow } from "@/hooks/useScrollReveal";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TechStack from "@/components/TechStack";
@@ -9,9 +8,9 @@ import Work from "@/components/Work";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
+import CustomCursor from "@/components/CustomCursor";
 
 const Index = () => {
-  const cursor = useCursorGlow();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -20,31 +19,48 @@ const Index = () => {
   });
 
   return (
-    <div className="min-h-screen bg-[#050505] selection:bg-primary/30 selection:text-white">
+    <div className="min-h-screen bg-[#050505] selection:bg-primary/30 selection:text-white cursor-none">
+      <CustomCursor />
+      <div className="grain-overlay" />
+      <div className="vignette" />
+
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-[60]"
         style={{ scaleX }}
       />
 
-      {/* Layered Cinematic Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(255,122,24,0.08),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(255,122,24,0.05),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(255,122,24,0.05),transparent_40%)]" />
-      </div>
+      {/* Dynamic Cinematic Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Animated Light Source 1: Top Left Orange */}
+        <motion.div
+          animate={{
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+            opacity: [0.08, 0.12, 0.08]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-1/4 -left-1/4 w-full h-full bg-[radial-gradient(circle,rgba(255,122,24,0.15)_0%,transparent_70%)]"
+        />
+        
+        {/* Animated Light Source 2: Bottom Right Amber */}
+        <motion.div
+          animate={{
+            x: [0, -40, 0],
+            y: [0, -60, 0],
+            opacity: [0.05, 0.08, 0.05]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-[radial-gradient(circle,rgba(255,163,100,0.1)_0%,transparent_70%)]"
+        />
 
-      {/* Cursor glow — desktop only */}
-      <motion.div
-        className="fixed pointer-events-none z-[100] hidden lg:block"
-        animate={{
-          left: cursor.x - 150,
-          top: cursor.y - 150,
-        }}
-        transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.5 }}
-      >
-        <div className="w-[300px] h-[300px] bg-primary/10 rounded-full blur-[80px]" />
-      </motion.div>
+        {/* Subtle Contrast Light: Deep Indigo */}
+        <motion.div
+          animate={{ opacity: [0.02, 0.04, 0.02] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(99,102,241,0.05)_0%,transparent_60%)]"
+        />
+      </div>
 
       <div className="relative z-10">
         <Navbar />

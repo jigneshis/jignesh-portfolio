@@ -8,32 +8,23 @@
   :root {
     --background: 0 0% 2%; /* Deep #050505 */
     --foreground: 40 20% 98%;
-
     --card: 0 0% 4%;
     --card-foreground: 40 20% 98%;
-
     --popover: 0 0% 4%;
     --popover-foreground: 40 20% 98%;
-
     --primary: 25 100% 55%; /* Warm Orange #ff7a18 */
     --primary-foreground: 0 0% 100%;
-
     --secondary: 0 0% 6%;
     --secondary-foreground: 40 20% 98%;
-
     --muted: 0 0% 10%;
     --muted-foreground: 0 0% 60%;
-
     --accent: 25 100% 55%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 0 0% 10%;
     --input: 0 0% 10%;
     --ring: 25 100% 55%;
-
     --radius: 1rem;
   }
 }
@@ -58,25 +49,41 @@
   letter-spacing: -0.02em;
 }
 
-h1, h2, h3 {
-  line-height: 1.1;
+/* ===== CINEMATIC EFFECTS ===== */
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: -100%;
+  z-index: 50;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3欲%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  animation: grain 8s steps(10) infinite;
 }
 
-/* ===== GLASSMORPHISM ===== */
+@keyframes grain {
+  0%, 100% { transform:translate(0, 0) }
+  10% { transform:translate(-5%, -10%) }
+  20% { transform:translate(-15%, 5%) }
+  30% { transform:translate(7%, -25%) }
+  40% { transform:translate(-5%, 25%) }
+  50% { transform:translate(-15%, 10%) }
+  60% { transform:translate(15%, 0%) }
+  70% { transform:translate(0%, 15%) }
+  80% { transform:translate(3%, 35%) }
+  90% { transform:translate(-10%, 10%) }
+}
+
+.vignette {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.4) 100%);
+}
+
 .glass-card {
   @apply bg-white/[0.03] backdrop-blur-md border border-white/10;
-}
-
-.glass-nav {
-  @apply bg-black/40 backdrop-blur-xl border-b border-white/5;
-}
-
-/* ===== PREMIUM GRADIENTS ===== */
-.bg-mesh {
-  background: 
-    radial-gradient(circle at 0% 0%, rgba(255, 122, 24, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(255, 122, 24, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(255, 122, 24, 0.02) 0%, transparent 50%);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .text-gradient-orange {
@@ -89,41 +96,33 @@ h1, h2, h3 {
   to { background-position: 200% center; }
 }
 
-/* ===== BUTTON GLOW ===== */
-.btn-primary-glow {
-  @apply relative overflow-hidden transition-all duration-300;
-  box-shadow: 0 0 0 0 rgba(255, 122, 24, 0);
+.shine-sweep {
+  position: relative;
+  overflow: hidden;
 }
 
-.btn-primary-glow:hover {
-  @apply scale-[1.03];
-  box-shadow: 0 0 30px 2px rgba(255, 122, 24, 0.4);
+.shine-sweep::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 55%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
 }
 
-/* ===== MARQUEE ===== */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-.animate-marquee-slow {
-  animation: marquee 50s linear infinite;
+.shine-sweep:hover::after {
+  transform: translateX(100%);
 }
 
-/* ===== MESH ANIMATION ===== */
-.animate-mesh {
-  animation: meshFlow 20s ease infinite alternate;
-}
-
-@keyframes meshFlow {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
-}
-
-/* ===== STROKE TEXT ===== */
 .text-stroke {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
   color: transparent;
 }
