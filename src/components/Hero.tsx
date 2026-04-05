@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import LiquidEther from "./LiquidEther";
 
 const Hero = () => {
   const containerVariants: Variants = {
@@ -23,7 +24,24 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[100svh] flex items-center justify-center pt-24 pb-16">
+    <section className="relative min-h-[100svh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
+      {/* Liquid Ether Background Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <LiquidEther 
+          colors={["#ff7a18", "#ff9a3c", "#ffb347"]}
+          mouseForce={18}
+          cursorSize={90}
+          isViscous={true}
+          viscous={30}
+          resolution={0.4}
+          autoDemo={true}
+          autoSpeed={0.4}
+          autoIntensity={2}
+        />
+        {/* Cinematic Blending Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background z-[1]" />
+      </div>
+
       <motion.div 
         variants={containerVariants}
         initial="hidden"
