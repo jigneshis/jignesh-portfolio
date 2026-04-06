@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Instagram, MessageCircle, Phone, Globe, ExternalLink } from "lucide-react";
-import DarkVeil from "@/components/DarkVeil";
+import LiquidEther from "@/components/LiquidEther";
 
 const HelloThere = () => {
   return (
