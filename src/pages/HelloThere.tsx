@@ -9,20 +9,8 @@ const HelloThere = () => {
     <div className="min-h-screen bg-background selection:bg-primary/30 selection:text-foreground">
       <div className="vignette" />
 
-      {/* Cinematic Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ x: [0, 100, 0], y: [0, 50, 0], opacity: [0.08, 0.12, 0.08] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-1/4 -left-1/4 w-full h-full bg-[radial-gradient(circle,rgba(123,92,255,0.12)_0%,transparent_70%)]"
-        />
-        <motion.div
-          animate={{ x: [0, -80, 0], y: [0, -40, 0], opacity: [0.06, 0.1, 0.06] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-[radial-gradient(circle,rgba(0,210,255,0.1)_0%,transparent_70%)]"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
-      </div>
+      {/* Animated Shader Background */}
+      <DarkVeil baseColor="#050507" veilColor="#5227FF" speed={0.3} intensity={0.8} />
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-20">
         {/* Top badge */}
