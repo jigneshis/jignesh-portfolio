@@ -10,7 +10,7 @@ const HelloThere = () => {
       <div className="vignette" />
 
       {/* Animated Shader Background */}
-      <DarkVeil baseColor="#050507" veilColor="#5227FF" speed={0.3} intensity={0.8} />
+      <LiquidEther colors={["#0a0a12", "#1a1040", "#0d0d1a"]} autoSpeed={0.2} autoIntensity={1.5} resolution={0.5} />
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-20">
         {/* Top badge */}
