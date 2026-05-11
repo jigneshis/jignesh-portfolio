@@ -19,6 +19,13 @@ const projects = [
     description: "A high-performance, brutalist password utility for developers who prioritize data sovereignty. Manage secrets in total isolation with zero cloud dependency.",
   },
   {
+    name: "Abi Editz",
+    href: "https://madxedits.com/",
+    tags: ["Video Portfolio", "Cinematic Edits"],
+    year: "2025",
+    description: "A premium video editor portfolio featuring cinematic transitions, beat-sync editing, and high-impact visual storytelling for social media platforms.",
+  },
+  {
     name: "Ishant Kale",
     href: "https://ishanttt.vercel.app",
     tags: ["Video Portfolio", "Creator Site"],
