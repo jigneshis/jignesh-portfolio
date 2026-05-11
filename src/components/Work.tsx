@@ -5,6 +5,13 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
+    name: "KeySync",
+    href: "https://keysync-jigneshis.vercel.app/",
+    tags: ["Security Tool", "Brutalist UI"],
+    year: "2024",
+    description: "A high-performance, brutalist password utility for developers who prioritize data sovereignty. Manage secrets in total isolation with zero cloud dependency.",
+  },
+  {
     name: "Ishant Kale",
     href: "https://ishanttt.vercel.app",
     tags: ["Video Portfolio", "Creator Site"],
