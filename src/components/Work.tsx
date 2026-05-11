@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    name: "Ishant Kumar",
+    name: "Ishant Kale",
     href: "https://ishanttt.vercel.app",
     tags: ["Video Portfolio", "Creator Site"],
     year: "2024",
