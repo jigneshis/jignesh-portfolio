@@ -20,7 +20,7 @@ const projects = [
   },
   {
     name: "Abi Editz",
-    href: "https://madxedits.com/",
+    href: "https://abi-editz.vercel.app/",
     tags: ["Video Portfolio", "Cinematic Edits"],
     year: "2025",
     description: "A premium video editor portfolio featuring cinematic transitions, beat-sync editing, and high-impact visual storytelling for social media platforms.",
