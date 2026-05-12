@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 const projects = [
   {
     name: "CrewCut",
-    href: "https://app.crewcut.in",
+    href: "https://crewcut-landing.vercel.app",
     tags: ["SaaS Startup", "Marketplace"],
     year: "2024",
     description: "A professional ecosystem for video agencies to manage editors, provide timestamped feedback, and automate creative workflows at scale.",
