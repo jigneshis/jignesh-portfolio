@@ -5,6 +5,13 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
+    name: "Apurvix Media",
+    href: "https://apurvixmedia.com",
+    tags: ["Clipping Agency", "Premium Service"],
+    year: "2026",
+    description: "A high-ticket clipping agency presence designed to turn authority-driven content into a sharp, credible client acquisition experience.",
+  },
+  {
     name: "CrewCut",
     href: "https://crewcut-landing.vercel.app",
     tags: ["SaaS Startup", "Marketplace"],

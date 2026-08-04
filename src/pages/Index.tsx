@@ -8,6 +8,7 @@ import Work from "@/components/Work";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const Index = () => {
   const { scrollYProgress } = useScroll();
@@ -19,6 +20,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#050507] selection:bg-primary/30 selection:text-white">
+      <SmoothScroll />
       <div className="vignette" />
 
       {/* Scroll Progress Bar */}

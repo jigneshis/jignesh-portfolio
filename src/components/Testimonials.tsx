@@ -5,6 +5,12 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
+    quote: "Not gonna lie, I love the website so much. You really did well, Jignesh, and I really got what I wanted.",
+    name: "Apoorv Sharma",
+    role: "Founder, Apurvix Media",
+    initials: "AS",
+  },
+  {
     quote: "Jignesh turned our outdated website into a conversion machine. Our ROI was instant.",
     name: "Rohit Sharma",
     role: "Owner, FitZone Gym",
