@@ -119,10 +119,6 @@ const Contact = () => {
 
           {/* Bottom Bar */}
           <div className="mt-16 flex flex-col sm:flex-row justify-between items-center gap-6 pt-8 border-t border-white/[0.03] text-[9px] font-black uppercase tracking-[0.3em] text-muted-foreground/30">
-            <div className="flex gap-8">
-              <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-            </div>
             <span>v2.0.24 — Digital Artifact</span>
           </div>
         </footer>
