@@ -41,7 +41,7 @@ const projects = [
   },
   {
     name: "Samim",
-    href: "https://illusion-gold.vercel.app",
+    href: "https://samim-editz.vercel.app/",
     tags: ["Editor Site", "Brand Growth"],
     year: "2025",
     description: "A specialized portfolio for a video editor focused on showcasing creative work to attract premium brand collaborations.",
