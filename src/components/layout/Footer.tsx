@@ -61,7 +61,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="text-base text-white hover:text-neutral-300 transition-colors"
             >
-              Let&apos;s Chat (WhatsApp) ↗
+              Book a Call (WhatsApp) ↗
             </a>
           </div>
 

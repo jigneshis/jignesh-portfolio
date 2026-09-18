@@ -30,7 +30,7 @@ export function About() {
           <div className="relative w-full max-w-sm aspect-4/5 rounded-3xl border border-border overflow-hidden shadow-lg group bg-card">
             <Image
               src="/images/profile/jignesh-portrait.jpg"
-              alt={siteConfig.name}
+              alt="Portrait of Jignesh Wadhwani"
               fill
               className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
               sizes="(max-width: 768px) 100vw, 384px"
@@ -74,7 +74,7 @@ export function About() {
 
           <div className="flex flex-col gap-4 text-muted text-base sm:text-lg leading-relaxed font-normal">
             <p>
-              I&apos;m {siteConfig.name} (friends call me {siteConfig.nickname}). I build web applications and digital products that actually move the needle for your business. Good software should just work without getting in the way of what users are trying to do.
+              I&apos;m {siteConfig.name} (friends call me {siteConfig.nickname}). I build web applications and digital products that deliver measurable growth for your business. Good software should just work without getting in the way of what users are trying to do.
             </p>
             <p>
               My day-to-day stack revolves around React, Next.js, TypeScript, and Node.js. I handle the entire lifecycle, from clean database architecture and rock-solid APIs all the way down to polished, pixel-perfect user interfaces that convert.

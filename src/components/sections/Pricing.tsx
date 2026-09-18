@@ -97,7 +97,7 @@ export function Pricing() {
 
                 <div className="flex flex-col gap-2">
                   <h3 className="text-2xl font-bold tracking-tight">{pkg.title}</h3>
-                  <p className="text-xs sm:text-sm opacity-80 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                     {pkg.description}
                   </p>
                 </div>
@@ -106,7 +106,7 @@ export function Pricing() {
                   {pkg.features.map((feature, fIdx) => (
                     <div key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm">
                       <span className="text-accent font-bold">✓</span>
-                      <span className="opacity-90">{feature}</span>
+                      <span className="text-zinc-300">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -123,7 +123,7 @@ export function Pricing() {
                       : 'bg-foreground text-background'
                   }`}
                 >
-                  Let&apos;s discuss →
+                  Let&apos;s discuss ↗
                 </a>
               </div>
             </div>

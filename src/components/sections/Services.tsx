@@ -93,41 +93,42 @@ function getServiceIcon(title: string) {
 export function Services() {
   return (
     <Section id="services" aria-label="Services" hasDivider className="py-20 md:py-28">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        {/* Left Column: Sticky Heading + Tech Stack */}
-        <div className="lg:col-span-5 relative w-full h-full">
-          <div className="w-full lg:sticky lg:top-28 flex flex-col gap-8">
-            <ScrollReveal className="flex flex-col gap-3">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
-                <span className="text-muted-foreground font-normal">Services that</span>{' '}
-                supercharge your business.
-              </h2>
-              <p className="text-muted text-sm sm:text-base leading-relaxed">
-                Full-cycle engineering from database architecture to high-converting user
-                interfaces.
-              </p>
-            </ScrollReveal>
+      <div className="flex flex-col gap-12">
+        {/* Section Header */}
+        <ScrollReveal className="flex flex-col gap-3 max-w-2xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
+            <span className="text-muted-foreground font-normal">Engineering services to</span>{' '}
+            scale your business.
+          </h2>
+          <p className="text-muted text-sm sm:text-base leading-relaxed">
+            Full-cycle engineering from database architecture to high-converting user
+            interfaces.
+          </p>
+        </ScrollReveal>
 
-            {/* Tech Stack Grid */}
-            <ScrollReveal delay={0.1} className="flex flex-col gap-3 pt-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-muted">
-                My tech stack
-              </span>
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-2.5">
-                {techStack.map((tech) => (
-                  <Tooltip key={tech.name} content={tech.name}>
-                    <div className="w-12 h-12 rounded-xl bg-card border border-border flex items-center justify-center text-foreground hover:border-foreground/30 hover:scale-105 hover:bg-card/80 transition-all cursor-default shadow-2xs">
-                      {getTechIcon(tech.name)}
-                    </div>
-                  </Tooltip>
-                ))}
-              </div>
-            </ScrollReveal>
+        {/* Tech Stack Grid — Full-width row with labels */}
+        <ScrollReveal delay={0.1} className="flex flex-col gap-3">
+          <span className="text-xs font-semibold uppercase tracking-wider text-muted">
+            My tech stack
+          </span>
+          <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-15 gap-3">
+            {techStack.map((tech) => (
+              <Tooltip key={tech.name} content={tech.name}>
+                <div className="flex flex-col items-center gap-1.5 cursor-default group">
+                  <div className="w-12 h-12 rounded-xl bg-card border border-border flex items-center justify-center text-foreground hover:border-foreground/30 hover:scale-105 hover:bg-card/80 transition-all shadow-2xs">
+                    {getTechIcon(tech.name)}
+                  </div>
+                  <span className="text-[10px] text-muted text-center leading-tight truncate w-full">
+                    {tech.name}
+                  </span>
+                </div>
+              </Tooltip>
+            ))}
           </div>
-        </div>
+        </ScrollReveal>
 
-        {/* Right Column: Services List */}
-        <div className="lg:col-span-7 flex flex-col gap-3">
+        {/* Services List — Full-width grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {services.map((service, index) => (
             <ScrollReveal key={service.title} delay={index * 0.05}>
               <div className="p-5 rounded-2xl bg-card border border-border flex items-center gap-4 hover:border-foreground/20 transition-all group">

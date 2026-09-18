@@ -13,7 +13,7 @@ export function Contact() {
       className="py-24 md:py-36 flex flex-col items-center text-center gap-8"
     >
       <ScrollReveal className="flex flex-col items-center gap-4 max-w-4xl text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.15] text-center flex flex-col items-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.15] text-center flex flex-col items-center">
           {/* Line 1: Let's [build/create/ship] */}
           <span className="text-muted-foreground font-normal inline-flex items-baseline justify-center whitespace-nowrap">
             <span>Let&apos;s</span>
