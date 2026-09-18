@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -47,12 +50,14 @@ export const metadata: Metadata = {
         url: '/images/og/default.png',
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} Portfolio`,
+        alt: `${siteConfig.name} — ${siteConfig.title}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@jigneshis',
+    creator: '@jigneshis',
     title: `${siteConfig.name} — ${siteConfig.title}`,
     description: siteConfig.description,
     images: ['/images/og/default.png'],
@@ -60,7 +65,43 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteConfig.siteUrl}/#person`,
+      name: siteConfig.name,
+      jobTitle: siteConfig.title,
+      url: siteConfig.siteUrl,
+      sameAs: [
+        'https://github.com/jigneshis',
+        'https://x.com/jigneshis',
+        'https://www.instagram.com/jignesh._.wadhwani/',
+      ],
+      description: siteConfig.description,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteConfig.siteUrl}/#website`,
+      url: siteConfig.siteUrl,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      publisher: {
+        '@id': `${siteConfig.siteUrl}/#person`,
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -71,6 +112,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

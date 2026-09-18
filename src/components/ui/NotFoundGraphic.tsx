@@ -175,13 +175,6 @@ export function NotFoundGraphic() {
             </text>
           </g>
         </svg>
-
-        {/* Playful caption tag below graphic */}
-        <div className="mt-2 text-center">
-          <span className="inline-block text-[11px] font-mono tracking-widest uppercase text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-900/80 px-3 py-1 rounded-full border border-neutral-200/80 dark:border-neutral-800">
-            HTTP 404 • ROUTE_MISSING
-          </span>
-        </div>
       </motion.div>
     </div>
   );

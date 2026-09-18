@@ -8,6 +8,31 @@ export const metadata: Metadata = {
   title: 'Projects',
   description:
     'Explore my portfolio of web applications, SaaS platforms, and custom development projects built with React, Next.js, TypeScript, and Node.js.',
+  alternates: {
+    canonical: '/projects',
+  },
+  openGraph: {
+    type: 'website',
+    url: '/projects',
+    title: 'Recent Projects — Jignesh Wadhwani',
+    description:
+      'Explore my portfolio of web applications, SaaS platforms, and custom development projects built with React, Next.js, TypeScript, and Node.js.',
+    images: [
+      {
+        url: '/images/og/default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Projects — Jignesh Wadhwani',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Recent Projects — Jignesh Wadhwani',
+    description:
+      'Explore my portfolio of web applications, SaaS platforms, and custom development projects built with React, Next.js, TypeScript, and Node.js.',
+    images: ['/images/og/default.png'],
+  },
 };
 
 export default function ProjectsPage() {

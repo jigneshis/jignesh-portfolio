@@ -11,7 +11,7 @@ export const siteConfig: SiteConfig = {
   telegramUrl: 'https://t.me/jigneshis',
   availableDate: "September'26",
   isAvailable: true,
-  siteUrl: 'https://portfolio-v2.vercel.app',
+  siteUrl: 'https://jignesh.crewcut.in',
   description:
     'Full-stack web developer specializing in React, Next.js, and Node.js. Building high-performance web applications that deliver results. Available for freelance projects.',
 };
